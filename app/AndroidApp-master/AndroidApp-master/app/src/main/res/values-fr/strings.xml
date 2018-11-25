@@ -1,0 +1,120 @@
+<resources>
+    <string name="me_title">Mon Electrique</string>
+    <string name="me_settings_title">Mes Flux Electrique</string>
+
+    <string name="ms_title">Mon Solaire</string>
+    <string name="ms_settings_title">Mes Flux Solaires</string>
+
+    <string name="navigation_drawer_open">Ouvrir le tiroir de navigation</string>
+    <string name="navigation_drawer_close">Fermer le tiroir de navigation</string>
+
+    <string name="cost_label">kWh / Coût</string>
+    <string name="power_now_label">ACTUELLE</string>
+    <string name="use_today_label">AUJOURD\'HUI</string>
+    <string name="solar_pv_label">PANNEAUX SOLAIRE</string>
+
+    <string name="open">ouvrir</string>
+    <string name="close">fermer</string>
+    <string name="fullscreen">Plein écran</string>
+    <string name="error">Erreur</string>
+    <string name="settings">Paramètres</string>
+
+    <string name="server_not_configured">Veuillez configurer votre serveur Emoncms et la clé API via le menu paramètres.</string>
+    <string name="me_not_configured_text">Veuillez configurer les flux via le menu \'engrenage\' dans la barre du haut .</string>
+    <string name="feed_download_error_message">Impossible de charger la liste des flux. Vérifier l\'adresse et la clé API de votre serveur emoncms ainsi que la connectivitée.</string>
+    <string name="invalid_number_of_responses">Nombre invalide de l\'API\'</string>
+    <string name="invalid_kwh_feedid">ID du Flux utilisation_kwh invalide, veuillez choisir un flux kwh via les paramètres</string>
+    <string name="invalid_watt_feedid">ID du Flux utilisation invalide, veuillez choisir un flux watt via les paramètres</string>
+
+    <string name="txt_power_default">0W</string>
+    <string name="use_today_default">0.0kWh</string>
+
+    <string name="button_3h_label">3H</string>
+    <string name="button_6h_label">6H</string>
+    <string name="button_1d_label">J</string>
+    <string name="button_7d_label">S</string>
+    <string name="button_30d_label">M</string>
+
+    <string name="connection_error">ERREUR DE CONNECTION</string>
+
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">L\'accès à la caméra est nécessaire pour la détection\'</string>
+    <string name="no_camera_permission">Le scanneur de code barre nécessite la caméra, autorisation refusé</string>
+    <string name="low_storage_error">Les dépendences de détection faciale ne peuvent être chargées par manque de place sur votre appareil</string>
+    <string name="title_activity_main">Exemple du lecteur de codes barre</string>
+    <string name="barcode_header">Clicker &quot;Lire code barre&quot; pour scanner le code barre</string>
+    <string name="read_barcode">Lire le code barre</string>
+    <string name="barcode_success">Lecture du code barre réussi</string>
+    <string name="barcode_failure">Code barre non lu</string>
+    <string name="barcode_error">"erreur de la lecture du code barre: %1$s"</string>
+    <string name="qr_code_success">Paramètres bien enregistrés suite à la lecture du code barre</string>
+    <string name="qr_code_fail">Code QR invalide</string>
+    <string name="barcode_scan_instructions">"Scanner le code barre sur la page Mon Compte de emoncms."</string>
+
+    <string name="monday_initial">lu</string>
+    <string name="tuesday_initial">ma</string>
+    <string name="wednesday_initial">me</string>
+    <string name="thursday_initial">je</string>
+    <string name="friday_initial">ve</string>
+    <string name="saturday_initial">sa</string>
+    <string name="sunday_initial">di</string>
+
+    <string name="system_locale">Monnaie Système</string>
+    <string name="dollars">Dollars</string>
+    <string name="pounds">Livres</string>
+    <string name="euros">Euros</string>
+    <string name="yen">Yen</string>
+
+    <string name="kwh_elapsed">kWh passé</string>
+    <string name="wh_elapsed">Watt heure passé</string>
+
+    <string name="chart_no_data_available">pas de données disponibles</string>
+
+    <string name="settings_title_app_settings">PARAMÈTRES APP</string>
+    <string name="settings_title_scanqrcode">Numériser le code QR</string>
+    <string name="settings_summary_scanqrcode">Permet de remplir automatiquement les champs de connectivité en utilisant le code QR sur la page du compte Emoncms</string>
+    <string name="settings_title_emoncms_url">Emoncms URL</string>
+    <string name="settings_summary_emoncms_url">l\'url Emoncms complet sans http:// par exemple "www.monsupersite.com/emoncms"</string>
+    <string name="settings_title_emoncms_apikey">Emoncms CLÉ API</string>
+    <string name="settings_summary_emoncms_apikey">Lire la clé API de la page Emoncms Mon compte</string>
+    <string name="settings_title_emoncms_usessl">Utiliser SSL</string>
+    <string name="settings_summary_emoncms_usessl"> Se connecter en utilisant https, pris en charge par emoncms.org, MAIS PAS POUR emonPi</string>
+    <string name="settings_title_keep_screen_on">Gardez l\'écran allumé</string>
+    <string name="settings_summary_keep_screen_on">Arrête l\'extinction de l\'écran de l\'appareil</string>
+    <string name="settings_title_language">Langue</string>
+    <string name="settings_summary_language">Choisir la Langue</string>
+
+    <string name="settings_title_myelectric_feeds">Accueil</string>
+    <string name="settings_title_myelectric_currency">Devise</string>
+    <string name="settings_title_myelectric_power_feed">Puissance alimentation (W)</string>
+    <string name="settings_title_myelectric_kwh_feed">"Alimentation graphique à barres (kWh)</string>
+    <string name="settings_title_myelectric_escale">Wh au kWh Feed FR</string>
+    <string name="settings_title_myelectric_unit_cost">Coût</string>
+    <string name="settings_title_myelectric_cost_symbol">Unité de coût</string>
+
+    <string name="account_settings">Paramètres du compte</string>
+    <string name="accounts">Compte</string>
+    <string name="settings_summary_emoncms_name">Nom court pour le compte</string>
+    <string name="settings_title_delete_account">Supprimer le compte</string>
+    <string name="settings_title_emoncms_name">Nom du compte</string>
+    <string name="settings_title_myelectric_page_name">Nom de la page</string>
+    <string name="settings_title_delete_page">Supprimer la page</string>
+
+    <string name="system_default">Défaillance du Système</string>
+    <string name="no_camera_found">Aucune caméra détectée pour la numérisation de codes à barres.</string>
+    <string name="settings_title_emoncms_connectivity">EMONCMS connectivité</string>
+    <string name="cancel">ANNULER</string>
+    <string name="settings_confirm_delete_account">Etes-vous certain de vouloir supprimer ce compte? tous les réglages seront perdu.</string>
+    <string name="settings_add_one_account">Ajouter au moins un compte pour continuer</string>
+    <string name="settings_confirm_delete_page">"Etes-vous certain de vouloir supprimer cette page?"</string>
+    <string name="settings_title_accounts">COMPTES</string>
+    <string name="settings_title_add_account">Ajouter compte</string>
+    <string name="settings_title_page_name">Nom de la page</string>
+    <string name="settings_title_page_name_default">Nouvelle page</string>
+    <string name="menu_add_page">Ajouter une page</string>
+
+    <string name="custom">Personnalisée</string>
+    <string name="settings_title_myelectric_custom_currency">Devise personnalisée</string>
+    <string name="settings_title_app_information">VERSION APPLICATION: </string>
+</resources>
+

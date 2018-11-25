@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="org.emoncms.myapps">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera" 
+                  android:required="false" />
+    <uses-permission android:name="android.permission.CAMERA" />
+  
+        <!-- Some Chromebooks don't support touch. Although not essential,
+         it's a good idea to explicitly include this declaration. -->
+    <uses-feature android:name="android.hardware.touchscreen"
+                  android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:name="org.emoncms.myapps.EmonApplication">
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
+
+        <activity
+            android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".settings.SettingsActivity"/>
+        <activity android:name=".settings.AccountSettingsActivity"/>
+        <activity android:name=".MyElectricSettingsActivity"/>
+        <activity android:name=".barcodescanner.BarcodeCaptureActivity"/>
+
+            <!--android:screenOrientation="landscape"-->
+            <!--android:resizeableActivity="false"-->
+
+    </application>
+</manifest>

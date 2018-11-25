@@ -1,0 +1,62 @@
+<resources>
+    <string-array name="escale_text" translatable="false">
+        <item>@string/kwh_elapsed</item>
+        <item>@string/wh_elapsed</item>
+    </string-array>
+
+    <string-array name="escale_values" translatable="false">
+        <item>1</item>
+        <item>0.001</item>
+    </string-array>
+
+    <string-array name="me_cost_text">
+        <item>@string/system_locale</item>
+        <item>@string/dollars</item>
+        <item>@string/pounds</item>
+        <item>@string/euros</item>
+        <item>@string/yen</item>
+        <item>@string/custom</item>
+    </string-array>
+
+    <string-array name="me_cost_values" translatable="false">
+        <item>0</item>
+        <item>$</item>
+        <item>£</item>
+        <item>€</item>
+        <item>¥</item>
+        <item>custom</item>
+    </string-array>
+
+    <string-array name="day_of_week_initials">
+        <item>@string/sunday_initial</item>
+        <item>@string/monday_initial</item>
+        <item>@string/tuesday_initial</item>
+        <item>@string/wednesday_initial</item>
+        <item>@string/thursday_initial</item>
+        <item>@string/friday_initial</item>
+        <item>@string/saturday_initial</item>
+    </string-array>
+
+    <string-array name="language_text">
+        <item>@string/system_default</item>
+        <item>@string/english</item>
+        <item>@string/french</item>
+        <item>@string/german</item>
+        <item>@string/italian</item>
+        <item>@string/dutch</item>
+        <item>@string/spanish</item>
+        <item>@string/portuguese</item>
+
+    </string-array>
+
+    <string-array name="language_values" translatable="false">
+        <item>@string/setting_language</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>it</item>
+        <item>nl</item>
+        <item>es</item>
+        <item>pt</item>
+    </string-array>
+</resources>

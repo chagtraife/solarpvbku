@@ -70,7 +70,7 @@ void send_data()
   buf.trim(); // lam sach chuoi
   String client_print = url + buf + apikey;
   //  String client_print = buf;
-  Serial.println(client_print);
+ // Serial.println(client_print);
   WiFiClient client;
   const int httpPort = 80;
   if (!client.connect(host, httpPort)) {
@@ -94,7 +94,7 @@ void send_data()
   // Read all the lines of the reply from server and print them to Serial
   while (client.available()) {
     String line = client.readStringUntil('\r');
-    Serial.print(line);
+   // Serial.print(line);
   }
 }
 

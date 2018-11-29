@@ -87,20 +87,20 @@ typedef struct ct
 		float i[250];
 		int len_iadc;
 		float I;
-		float Iavr;
+		float Iavr;//(mA)
 		}ct;
 typedef struct vt
 	{
 		int uadc[250];
 		float u[250];
 		int len_uadc;
-		float U;
+		float U;//(0.1V)
 		float Uavr;
 		}vt;
 typedef struct p
 	{
 		float P;
-		float Pavr;
+		float Pavr;//(0.0001W)
 		
 		}p;
 
@@ -414,8 +414,12 @@ static unsigned int calcuteCRC16 (unsigned char *pBuff, unsigned char pLen)
 void send_data(void)
 {
 	//		printf("send data");
-	printf("?node=solarpvtxdc&fulljson={\"I1\":%d,\"I2\":%d,\"I3\":%d,\"U1\":%d,\"U2\":%d,\"U3\":%d}", (int) ct1.Iavr, (int) ct2.Iavr,(int) ct3.Iavr,(int) vt1.Uavr,(int) vt2.Uavr,(int) vt3.Uavr);
-		
+	printf("?node=solarpvtxdc&fulljson={\"I1_mA\":%d,\"I2_mA\":%d,\"I3_mA\":%d,", (int) ct1.Iavr, (int) ct2.Iavr,(int) ct3.Iavr);
+	printf("\"U1_0.1V\":%d,\"U2_0.1V\":%d,\"U3_0.1V\":%d,",(int) vt1.Uavr,(int) vt2.Uavr,(int) vt3.Uavr);
+	printf("\"P1_mW\":%d,\"P2_mW\":%d,\"P3_mW\":%d}\n",(int) (p1.Pavr/10),(int) (p2.Pavr/10),(int) (p3.Pavr/10));
+	
+	//I1,I2,I3:mA;    U1,U2,U3:0.1V;      P1,P2,P3: mW      
+	
 }
 void process_cmd(void)
 {
@@ -451,7 +455,7 @@ void measure_data(void)
 								vt1.uadc[k] = read_adc(ADC1, ADC_VT1);//uadc_vt1
 						    vt2.uadc[k] = read_adc(ADC1, ADC_VT2);//uadc_vt2
 						    vt3.uadc[k] = read_adc(ADC1, ADC_VT3);//uadc_vt3
-								Delay_ms(10);
+								//Delay_ms(1);
 					}while(!(k==240)); 		//20ms = 40us*500
 					#else
 					k= 490;

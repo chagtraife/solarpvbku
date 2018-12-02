@@ -7,6 +7,27 @@
 
 
 
+/*//=======================================================
+         VT1-A5
+CT1-A4         
+CT2-A2         
+
+CT: I_CT1 = V_A4-3.3/2
+		I_CT2 = V_A2-3.3/2
+
+VT: VT1-A5 = V_A5*scale - 3.3/2           //scale = calib*(R1+R2)/R2     : n:ti so bien ap 220/12; R1 = 220k; R2 = 10k
+					 = V_A%*23 - 3.3/2
+//-=======================================================*/
+#define GPIO_CT1 GPIO_Pin_4
+#define GPIO_CT2 GPIO_Pin_2
+#define GPIO_VT1 GPIO_Pin_5
+//----------------------------------------------------------------
+#define ADC_CT1 ADC_Channel_4
+#define ADC_CT2 ADC_Channel_2
+#define ADC_VT1 ADC_Channel_5
+//===============================================================
+
+
 
 #define SLAVE_ID  01
 //#define TEST
@@ -47,17 +68,50 @@ PUTCHAR_PROTOTYPE
 GPIO_InitTypeDef			GPIO_InitStructure;
 NVIC_InitTypeDef NVIC_InitStructure;
 USART_InitTypeDef			UART_InitStructure;
-ADC_InitTypeDef 			ADC_InitStructure;
-ADC_InitTypeDef       ADC1_InitStructure;
-ADC_InitTypeDef				ADC2_InitStructure;
+ADC_InitTypeDef 			ADC1_InitStructure;
+DMA_InitTypeDef       DMA_InitStruct;
 TIM_TimeBaseInitTypeDef TIM_InitStructure;
+
+
+
+
+typedef struct ct
+	{
+		int iadc[500];
+		float i[500];
+		int len_iadc;
+		float I;
+		float Iavr;//(mA)
+		}ct;
+typedef struct vt
+	{
+		int uadc[500];
+		float u[500];
+		int len_uadc;
+		float U;//(0.1V)
+		float Uavr;
+		}vt;
+typedef struct p
+	{
+		float P;
+		float Pavr;//(0.0001W)
+		
+		}p;
+
+ct ct1,ct2;
+vt vtac;
+p p1,p2;
+
+
+
 
 //uint8_t data =10;
 float value_adc1 = 0,sum_adc1=0, adc_tb1=0;
 float value_adc2 = 0,sum_adc2=0, adc_tb2=0;
-int k;
-float i1,i2,u2,_u2;
-float i_1[500],i_2[500],u_2[500];
+int k,r,timeout;
+uint16_t ADC1ConvertedValue[3] = {0,0,0};
+//float i1,i2,u2,_u2;
+//float i_1[500],i_2[500],u_2[500];
 
 
 #ifdef TEST
@@ -67,7 +121,7 @@ float i_1[500],i_2[500],u_2[500];
 	//r1(iadc_1) =10 ohm
 	//r2(iadc_2) =15 ohm
 #else
-  int iadc_1[500],iadc_2[500],uadc_2[500];		
+  //int iadc_1[500],iadc_2[500],uadc_2[500];		
 #endif
 int len_iadc_1, len_iadc_2, len_uadc_2;
 float I1, I2,U2 ,f, P1, P2, PF;
@@ -75,15 +129,16 @@ volatile extern char state;
 volatile extern char cmd_buf[8];
 
 void measure_data(void);
+void avr_data(void);
+
 
 
 void GPIO_Configuration(void);
 void Delay_ms(uint16_t time);
 void Delay_us(uint16_t time);
-void Delay_smooth_check_us(uint16_t time);
+void getdata_time(uint16_t time);
 void UART_Configuration (void);
-void ADC1_Configuration(void);
-void ADC2_Configuration(void);
+void ADC_Configuration(void);
 void TIM4_Configuration(void);
 int read_adc(ADC_TypeDef* ADCx,uint8_t ADC_Channel);// adc-> voltage
 float convert_adc(float value_adc, int scale);
@@ -100,10 +155,10 @@ int main(void)
 
 	GPIO_Configuration();
 	UART_Configuration();//uart_debug+ uart to ras
-	ADC1_Configuration();// CT1/CT2
-  ADC2_Configuration();// VT1
-	TIM4_Configuration();
-	state  = IDLE_STATE;
+	ADC_Configuration();// CT1/CT2/VT1
+	//TIM4_Configuration();
+	state  = MEA_STATE;
+	r=0;// l: la so lan MEAS trong khoang thoi gian request cua esp
   while (1)
   {	
 		switch(state)
@@ -119,7 +174,8 @@ int main(void)
 			case TRANS_STATE: 
 				{
 					send_data();
-					state = IDLE_STATE;
+					state = MEA_STATE;
+					r=0;
 					break;
 					}
 			case RECV_STATE:
@@ -129,8 +185,8 @@ int main(void)
 					}
 			case MEA_STATE:
 				{
-					measure_data();
-					state = TRANS_STATE;
+					measure_data(); // mesure data trong 1 chu ki dien
+					avr_data();
 					break;
 					}
 			}
@@ -160,18 +216,28 @@ uint32_t time_n=time*12;
 	while(time_n!=0){time_n--;}
 }
  
-void Delay_smooth_check_us(uint16_t time)
+void getdata_time(uint16_t time)
 	{
     uint32_t time_n=time;
 		int uadc_2_raw =0 ;
-		uadc_2[k] = 0;
+		int iadc_1_raw =0 ;
+		int iadc_2_raw =0 ;
+		vtac.uadc[k] = 0;
+		ct1.iadc[k]=0;
+		ct2.iadc[k]=0;
 	  while(time_n!=0)
 		{
 		 time_n--;
-		 uadc_2_raw = read_adc(ADC2,ADC_Channel_5);
-		 uadc_2[k] += uadc_2_raw;
+		 uadc_2_raw = read_adc(ADC1,ADC_VT1);
+		 iadc_1_raw = read_adc(ADC1,ADC_CT1);
+		 iadc_2_raw = read_adc(ADC1,ADC_CT2);
+		 vtac.uadc[k] += uadc_2_raw;
+		 ct1.iadc[k] += iadc_1_raw;
+		 ct2.iadc[k] += iadc_2_raw;
 		}	
-		uadc_2[k] /= time; 
+		vtac.uadc[k] /= time;
+		ct1.iadc[k] /= time;
+		ct2.iadc[k] /= time;
 	}
 void UART_Configuration (void)
 	{
@@ -211,34 +277,66 @@ void UART_Configuration (void)
 	    USART_ITConfig(USART1, USART_IT_RXNE, ENABLE); //cho phep ngat nhan 
       //USART_ITConfig(USART1, USART_IT_TXE, ENABLE); // cho phep ngat truyen
 	}
-
-void ADC1_Configuration(void)
+void ADC_Configuration(void)
 	{
-		/*cap clock cho chan GPIO va bo ADC1*/
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1 , ENABLE);
+		    /* Enable ADC1, DMA1 and GPIO clocks ****************************************/
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1 , ENABLE);
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);//ADC1 is connected to the APB2 peripheral bus
 		
-		/*cau hinh chan Input cua bo ADC1 la chan PA4===CT1*/
-		GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_4;
+		    /* DMA1  channel1 configuration **************************************/
+    DMA_DeInit(DMA1_Channel1);
+    DMA_InitStruct.DMA_PeripheralBaseAddr = (uint32_t)&ADC1->DR;//ADC1's data register
+    DMA_InitStruct.DMA_MemoryBaseAddr = (uint32_t)&ADC1ConvertedValue;
+    DMA_InitStruct.DMA_DIR = DMA_DIR_PeripheralSRC;
+    DMA_InitStruct.DMA_BufferSize = 3;
+    DMA_InitStruct.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+    DMA_InitStruct.DMA_MemoryInc = DMA_MemoryInc_Enable;
+    DMA_InitStruct.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;//Reads 16 bit values
+    DMA_InitStruct.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;//Stores 16 bit values
+    DMA_InitStruct.DMA_Mode = DMA_Mode_Circular;
+    DMA_InitStruct.DMA_Priority = DMA_Priority_High;
+    DMA_InitStruct.DMA_M2M = DMA_M2M_Disable;
+		DMA_Init(DMA1_Channel1, &DMA_InitStruct);
+    DMA_Cmd(DMA1_Channel1, ENABLE);
+		
+		/*cau hinh chan Input cua bo ADC1 la chan CT1*/
+		GPIO_InitStructure.GPIO_Pin =  GPIO_CT1;
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
 		
-				/*cau hinh chan Input cua bo ADC1 la chan PA2==CT2*/
-		GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_2;
+				/*cau hinh chan Input cua bo ADC1 la chan CT2*/
+		GPIO_InitStructure.GPIO_Pin =  GPIO_CT2;
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+		GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+
+
+		/*cau hinh chan Input cua bo ADC1 la chan PA5==VT1*/
+		GPIO_InitStructure.GPIO_Pin =  GPIO_VT1;
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
 		
+
+
 		/*cau hinh ADC1*/
+		ADC_DeInit(ADC1);
 		ADC1_InitStructure.ADC_Mode = ADC_Mode_Independent;
 		ADC1_InitStructure.ADC_ScanConvMode = ENABLE;
 		ADC1_InitStructure.ADC_ContinuousConvMode = ENABLE;
 		ADC1_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
 		ADC1_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
-		ADC1_InitStructure.ADC_NbrOfChannel = 1;
+		ADC1_InitStructure.ADC_NbrOfChannel = 3;
 		ADC_Init(ADC1, &ADC1_InitStructure);
-	
+		
+		    /* Select the channels to be read from **************************************/
+    ADC_RegularChannelConfig(ADC1, ADC_CT1, 1, ADC_SampleTime_55Cycles5);//CT1
+    ADC_RegularChannelConfig(ADC1, ADC_CT2, 2, ADC_SampleTime_55Cycles5);//CT2
+    ADC_RegularChannelConfig(ADC1, ADC_VT1, 3, ADC_SampleTime_55Cycles5);//VT1
+
 	  /* Enable ADC1 DMA */
 	  ADC_DMACmd(ADC1, ENABLE);
 //		/* Cau hinh chanel, rank, thoi gian lay mau */
@@ -260,44 +358,7 @@ void ADC1_Configuration(void)
 
 	}
 	
-	void ADC2_Configuration(void)
-	{
-		/*cap clock cho chan GPIO va bo ADC2*/
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC2 , ENABLE);
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-		
-		/*cau hinh chan Input cua bo ADC2 la chan PA5*/
-		GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_5;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
-		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_Init(GPIOA, &GPIO_InitStructure);
-		
-		/*cau hinh ADC2*/
-		ADC2_InitStructure.ADC_Mode = ADC_Mode_Independent;
-		ADC2_InitStructure.ADC_ScanConvMode = ENABLE;
-		ADC2_InitStructure.ADC_ContinuousConvMode = ENABLE;
-		ADC2_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
-		ADC2_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
-		ADC2_InitStructure.ADC_NbrOfChannel = 1;
-		ADC_Init(ADC2, &ADC2_InitStructure);
 	
-		/* Cau hinh chanel, rank, thoi gian lay mau */
-		ADC_RegularChannelConfig(ADC2, ADC_Channel_5, 1, ADC_SampleTime_55Cycles5);
-			/* Cho phep bo ADC1 hoa dong */
-		ADC_Cmd(ADC2, ENABLE);   
-		/* cho phep cam bien nhiet hoat dong */
-		ADC_TempSensorVrefintCmd(ENABLE);
-		/* Reset thanh ghi cablib  */   
-		ADC_ResetCalibration(ADC2);
-		/* Cho thanh ghi cablib reset xong */
-		while(ADC_GetResetCalibrationStatus(ADC2));
-		/* Khoi dong bo ADC */
-		ADC_StartCalibration(ADC2);	
-		/* Cho trang thai cablib duoc bat */
-		while(ADC_GetCalibrationStatus(ADC2));
-		/* Bat dau chuyen doi ADC */ 
-		ADC_SoftwareStartConvCmd(ADC2, ENABLE);
-		}
 	
 void TIM4_Configuration(void)
 {	
@@ -325,31 +386,21 @@ void TIM4_Configuration(void)
 int	read_adc(ADC_TypeDef* ADCx,uint8_t ADC_Channel)
 	  {
     int result,value_adc;
-		int k;
 		value_adc =0;
-		if(ADCx == ADC1){
-		    ADC_RegularChannelConfig(ADCx, ADC_Channel, 1 , ADC_SampleTime_1Cycles5);
-		    for(k=0;k<1;k++)
-			  {
-		        value_adc = ADC_GetConversionValue(ADCx);		
-			  }
-		    value_adc = ADC_GetConversionValue(ADCx);
+		    
+			//Delay_us(100);
+			if(ADC_Channel == ADC_CT1)	value_adc = ADC1ConvertedValue[0];
+			if(ADC_Channel == ADC_CT2)  value_adc = ADC1ConvertedValue[1];
+			if(ADC_Channel == ADC_VT1)  value_adc = ADC1ConvertedValue[2];
+
 			  result = value_adc;
 		    return result;
-		}
-		if(ADCx == ADC2)
-			{
-				value_adc = ADC_GetConversionValue(ADCx);	
-				result = value_adc;
-				return result;
-				}
-		return result;
 	}
 
 float convert_adc(float value_adc, int scale)
 	{
 		float result ;
-		result =( (value_adc-2048)/1240 )*scale;
+		result =(value_adc-2048 )*scale/1240;
 		return result;
 		}
 
@@ -362,7 +413,7 @@ float RMS_cal(float	*value, int len_value)// caculator RMS
 		{
 			result = result + (*(value+k))*(*(value+k));
 			}
-		result = result/k;// result = result / len_value
+		result = result/len_value;// result = result / len_value
 		result = sqrt(result);
 	return result;
 		}
@@ -374,7 +425,7 @@ float P_CAL(float *value1,float *value2, int len_value)//caculator  Potestas  (w
 	{
 		result = result + (*(value1+k))*(*(value2+k));
 		}
-	result = result *0.002;// result = result / len_value
+	result = result *len_value;// result = result / len_value
 	//result = value1*value2*0.002;
 	return result;
 	}
@@ -417,7 +468,7 @@ static unsigned int calcuteCRC16 (unsigned char *pBuff, unsigned char pLen)
 void send_data(void)
 {
 	//		printf("send data");
-	printf("?node=solarpvtx&fulljson={\"U2\":%d,\"I1\":%d,\"I2\":%d,\"P1\":%d,\"P2\":%d}", (int) U2, (int) I1,(int) I2,(int) P1,(int) P2);
+	printf("?node=solarpvtxac&fulljson={\"UAC_0.1V\":%d,\"I1_mA\":%d,\"I2_mA\":%d,\"P1_mW\":%d,\"P2_mW\":%d}\n", (int) vtac.Uavr, (int) ct1.Iavr,(int) ct2.Iavr,(int) (p1.Pavr/10),(int) (p2.Pavr/10));
 		
 }
 void process_cmd(void)
@@ -443,16 +494,20 @@ void measure_data(void)
 			//printf("measure data");
 		#ifndef TEST
 		    // check zero crossing, voltage increase
+					timeout =0;
 						do 
 			 		{
 						k=0;
-						Delay_smooth_check_us(30);
-					}while(uadc_2[0] > 2048);
+						getdata_time(15);
+						timeout++;
+					}while((vtac.uadc[0] > 2048));
+					
 					do
 						{
 						//k=0;
-						Delay_smooth_check_us(30);
-							}while(uadc_2[0]<2048);
+						getdata_time(15);
+							timeout++;
+							}while((vtac.uadc[0]<2048)&&(timeout <30000));
 					//turn on timer to measure frenquence
 					
 					
@@ -460,11 +515,14 @@ void measure_data(void)
 					  do
 					{
 								k++;
-						//		iadc_1[k] = read_adc(ADC1, ADC_Channel_1);
-							//	iadc_2[k] = read_adc(ADC1, ADC_Channel_2);
-								//uadc_2[k] = read_adc(ADC2,ADC_Channel_1);
-								Delay_smooth_check_us(30);
-					}while(!(((uadc_2[k-1]<2048)&&(uadc_2[k]>2048))||(k==499))); 		//20ms = 40us*500
+								//ct1.iadc[k] = read_adc(ADC1, ADC_CT1);
+								//ct2.iadc[k] = read_adc(ADC1, ADC_CT2);
+								//vtac.uadc[k] = read_adc(ADC1,ADC_VT1);
+								getdata_time(15);
+						timeout++;
+					}while((!(((vtac.uadc[k-1]<2048)&&(vtac.uadc[k]>2048))||(k==499)))); 		//20ms = 40us*500
+					
+					//if(timeout > 30000) return;
 					#else
 					k= 490;
 	  #endif
@@ -477,16 +535,16 @@ void measure_data(void)
 					//convert voltage adc -> current/voltage true
 					for(m=0;m<k+1;m++)
 					{
-					i_1[m] = convert_adc(iadc_1[m],10);
-					i_2[m] = convert_adc(iadc_2[m],10);
-						u_2[m] = convert_adc(uadc_2[m],384);// scale = calib*n*(R1+R2)/R2     : n:ti so bien ap 220/12; R1 = 220k; R2 = 10k
+					ct1.i[m] = convert_adc(ct1.iadc[m],1000);
+					ct2.i[m] = convert_adc(ct2.iadc[m],1000);    //mA
+					vtac.u[m] = convert_adc(vtac.uadc[m],1451);   //0.1V;// scale = calib*n*(R1+R2)/R2     : n:ti so bien ap 220/12; R1 = 220k; R2 = 10k
 						}
 					
 					
 					//caculator I_RMS, U_RMS, P, PF, frequence
-					I1= RMS_cal(i_1,k+1);
-					I2= RMS_cal(i_2,k+1);
-					U2= RMS_cal(u_2,k+1);
+					ct1.I= RMS_cal(ct1.i,k+1);
+					ct2.I= RMS_cal(ct2.i,k+1);
+					vtac.U= RMS_cal(vtac.u,k+1);
 					
 					/*//--------------
 					for(m=0;m<k+1;m++)
@@ -496,7 +554,24 @@ void measure_data(void)
 					//--------------*/	
 						
 //					f = f_cal();
-					P1 = P_CAL(i_1,u_2,k+1);
-					P2 = P_CAL(i_2,u_2,k+1);
+					p1.P = P_CAL(ct1.i,vtac.u,k+1);
+					p2.P = P_CAL(ct2.i,vtac.u,k+1);
+					r++;
 	//				PF = PF_cal();
 		}
+
+		
+void avr_data(void)
+	{
+				//if(timeout>30000) return;
+				ct1.Iavr = (ct1.Iavr*(r-1) + ct1.I)/r;
+				ct2.Iavr = (ct2.Iavr*(r-1) + ct2.I)/r;
+				vtac.Uavr = (vtac.Uavr*(r-1) + vtac.U)/r;
+				p1.Pavr = (p1.Pavr*(r-1) + p1.P)/r;
+				p2.Pavr = (p2.Pavr*(r-1) + p2.P)/r;
+				if(r>60000) {
+					while(1){}
+					}
+		}
+	
+

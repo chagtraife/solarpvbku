@@ -54,7 +54,7 @@ void USART1_IRQHandler(void)
 		if(cmd_buf[RxCounter1]== '\n'){ // '\n' = 0x0A
 			RxCounter1=0;
 			if (strncmp(cmd_buf, check ,3)){
-				state = 3;//
+				state = 1;//TRANS_STATE
 		//	USART_ClearITPendingBit(USART1,USART_IT_RXNE);
 			//PWR_DeInit();
 				}

@@ -74,9 +74,8 @@ PUTCHAR_PROTOTYPE
 GPIO_InitTypeDef			GPIO_InitStructure;
 NVIC_InitTypeDef NVIC_InitStructure;
 USART_InitTypeDef			UART_InitStructure;
-ADC_InitTypeDef 			ADC_InitStructure;
 ADC_InitTypeDef       ADC1_InitStructure;
-ADC_InitTypeDef				ADC2_InitStructure;
+DMA_InitTypeDef       DMA_InitStruct;
 TIM_TimeBaseInitTypeDef TIM_InitStructure;
 
 
@@ -114,7 +113,7 @@ p p1,p2,p3;
 float value_adc1 = 0,sum_adc1=0, adc_tb1=0;
 float value_adc2 = 0,sum_adc2=0, adc_tb2=0;
 int k,r;
-
+uint16_t ADC1ConvertedValue[6] = {0,0,0,0,0,0};
 
 
 #ifdef TEST
@@ -142,9 +141,9 @@ void Delay_us(uint16_t time);
 void UART_Configuration (void);
 void ADC_Configuration(void);
 int read_adc(ADC_TypeDef* ADCx,uint8_t ADC_Channel);// adc-> voltage
-float convert_adc(float value_adc, int scale);
-float AVR_cal(float *value, int len_value);// caculator AVR
-float P_CAL(float *value1,float *value2, int len_value);//caculator  Potestas  (w)
+float convert_adc(float value_adc, float scale);
+float AVR_cal(float *value, float len_value);// caculator AVR
+float P_CAL(float *value1,float *value2, float len_value);//caculator  Potestas  (w)
 //float PF_cal();//caculator POWER FACTOR
 //float f_cal();//caculator frenquence(Hz)
 unsigned int calcuteCRC16 (unsigned char *pBuff, unsigned char pLen);
@@ -153,8 +152,7 @@ void process_cmd(void);
 
 int main(void)
 {
-
-	GPIO_Configuration();
+		GPIO_Configuration();
 	UART_Configuration();//uart_debug+ uart to ras
 	ADC_Configuration();// CT1/CT2/CT3/ VT1/VT2/VT3
 	state  = MEA_STATE;
@@ -260,9 +258,26 @@ void UART_Configuration (void)
 
 void ADC_Configuration(void)
 	{
-		/*cap clock cho chan GPIO va bo ADC1*/
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1 , ENABLE);
+		    /* Enable ADC1, DMA1 and GPIO clocks ****************************************/
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1 , ENABLE);
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);//ADC1 is connected to the APB2 peripheral bus
+		
+		    /* DMA1  channel1 configuration **************************************/
+    DMA_DeInit(DMA1_Channel1);
+    DMA_InitStruct.DMA_PeripheralBaseAddr = (uint32_t)&ADC1->DR;//ADC1's data register
+    DMA_InitStruct.DMA_MemoryBaseAddr = (uint32_t)&ADC1ConvertedValue;
+    DMA_InitStruct.DMA_DIR = DMA_DIR_PeripheralSRC;
+    DMA_InitStruct.DMA_BufferSize = 6;
+    DMA_InitStruct.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+    DMA_InitStruct.DMA_MemoryInc = DMA_MemoryInc_Enable;
+    DMA_InitStruct.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;//Reads 16 bit values
+    DMA_InitStruct.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;//Stores 16 bit values
+    DMA_InitStruct.DMA_Mode = DMA_Mode_Circular;
+    DMA_InitStruct.DMA_Priority = DMA_Priority_High;
+    DMA_InitStruct.DMA_M2M = DMA_M2M_Disable;
+		DMA_Init(DMA1_Channel1, &DMA_InitStruct);
+    DMA_Cmd(DMA1_Channel1, ENABLE);
 		
 		/*cau hinh chan Input cua bo ADC1 la chan PA6==CT1*/
 		GPIO_InitStructure.GPIO_Pin =  GPIO_CT1;
@@ -302,14 +317,23 @@ void ADC_Configuration(void)
 		
 
 		/*cau hinh ADC1*/
+		ADC_DeInit(ADC1);
 		ADC1_InitStructure.ADC_Mode = ADC_Mode_Independent;
 		ADC1_InitStructure.ADC_ScanConvMode = ENABLE;
 		ADC1_InitStructure.ADC_ContinuousConvMode = ENABLE;
 		ADC1_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
 		ADC1_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
-		ADC1_InitStructure.ADC_NbrOfChannel = 1;
+		ADC1_InitStructure.ADC_NbrOfChannel = 6;
 		ADC_Init(ADC1, &ADC1_InitStructure);
-	
+		
+		    /* Select the channels to be read from **************************************/
+    ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1, ADC_SampleTime_1Cycles5);//PA1
+    ADC_RegularChannelConfig(ADC1, ADC_Channel_2, 2, ADC_SampleTime_1Cycles5);//PA2
+    ADC_RegularChannelConfig(ADC1, ADC_Channel_3, 3, ADC_SampleTime_1Cycles5);//PA3
+    ADC_RegularChannelConfig(ADC1, ADC_Channel_4, 4, ADC_SampleTime_1Cycles5);//PA4
+    ADC_RegularChannelConfig(ADC1, ADC_Channel_5, 5, ADC_SampleTime_1Cycles5);//PA5
+    ADC_RegularChannelConfig(ADC1, ADC_Channel_6, 6, ADC_SampleTime_1Cycles5);//PA6
+
 	  /* Enable ADC1 DMA */
 	  ADC_DMACmd(ADC1, ENABLE);
 //		/* Cau hinh chanel, rank, thoi gian lay mau */
@@ -336,22 +360,22 @@ int	read_adc(ADC_TypeDef* ADCx,uint8_t ADC_Channel)
 	  {
     int result,value_adc;
 		value_adc =0;
-		    ADC_RegularChannelConfig(ADCx, ADC_Channel, 1 , ADC_SampleTime_239Cycles5);
+		    
 			//Delay_us(100);
-		    value_adc = ADC_GetConversionValue(ADCx);
+		    value_adc = ADC1ConvertedValue[ADC_Channel -1];
 
 			  result = value_adc;
 		    return result;
 	}
 
-float convert_adc(float value_adc, int scale)
+float convert_adc(float value_adc, float scale)
 	{
 		float result ;
-		result =( (value_adc-2048)/1240 )*scale;
+		result =((value_adc-2048)/1240 )*scale;
 		return result;
 		}
 
-float AVR_cal(float	*value, int len_value)// caculator RMS
+float AVR_cal(float	*value, float len_value)// caculator RMS
 	{
 		float result;
 		result =0;
@@ -360,10 +384,10 @@ float AVR_cal(float	*value, int len_value)// caculator RMS
 		{
 			result = result + (*(value+k));
 			}
-		result = result/k;// result = result / len_value
+		result = result/len_value;// result = result / len_value
 	return result;
 		}
-float P_CAL(float *value1,float *value2, int len_value)//caculator  Potestas  (w)
+float P_CAL(float *value1,float *value2, float len_value)//caculator  Potestas  (w)
 {
 	float result;
 	int k;
@@ -371,7 +395,7 @@ float P_CAL(float *value1,float *value2, int len_value)//caculator  Potestas  (w
 	{
 		result = result + (*(value1+k))*(*(value2+k));
 		}
-	result = result *0.002;// result = result / len_value
+	result = result /len_value;// result = result / len_value
 	//result = value1*value2*0.002;
 	return result;
 	}
@@ -502,7 +526,7 @@ void avr_data(void)
 	{
 
 				ct1.Iavr = (ct1.Iavr*(r-1) + ct1.I)/r;
-				ct2.Iavr = (ct3.Iavr*(r-1) + ct2.I)/r;
+				ct2.Iavr = (ct2.Iavr*(r-1) + ct2.I)/r;
 				ct3.Iavr = (ct3.Iavr*(r-1) + ct3.I)/r;
 				vt1.Uavr = (vt1.Uavr*(r-1) + vt1.U)/r;
 				vt2.Uavr = (vt2.Uavr*(r-1) + vt2.U)/r;

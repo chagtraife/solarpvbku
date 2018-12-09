@@ -32,3 +32,9 @@
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: ..\display.h
+.\objects\main.o: ..\i2c.h
+.\objects\main.o: ..\u8g_arm.h
+.\objects\main.o: ..\..\lib\src_u8glib\u8g.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\main.o: ..\measure.h

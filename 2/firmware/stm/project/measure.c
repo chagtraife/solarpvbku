@@ -180,9 +180,13 @@ float P_CAL(float *value1,float *value2, int len_value)//caculator  Potestas  (w
 {
 	float result =0;
 	int m;
+	int phase_calib = 360;
+	int _val1, _val2;
 	for(m = 0; m < len_value; m++)
 	{
-		result = result + (*(value1 + m))*(*(value2 + m));
+		_val1 = (m + phase_calib) - ((m + phase_calib)/len_value)*len_value;
+		//result = result + (*(value1 + m))*(*(value2 + m));
+		result = result + (*(value1 + _val1))*(*(value2 + m));
 		}
 	result = result/len_value;// result = result / len_value
 	//result = value1*value2*0.002;

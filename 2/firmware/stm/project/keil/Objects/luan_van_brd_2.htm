@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\luan_van_brd_2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\luan_van_brd_2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Dec 09 23:03:38 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Dec 18 22:23:26 2018
 <BR><P>
 <H3>Maximum Stack Usage =        252 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -92,7 +92,7 @@ Global Symbols
 <P><STRONG><a name="[3d]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
-<P><STRONG><a name="[f3]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[f4]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[43]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -102,15 +102,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[f4]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[f5]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[f5]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[f6]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[f6]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[f7]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[f7]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[f8]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[f8]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[f9]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[6]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
@@ -314,6 +314,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;measure_data_AC
 </UL>
 
+<P><STRONG><a name="[b2]"></a>__aeabi_f2iz</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ffixi.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_data
+</UL>
+
 <P><STRONG><a name="[82]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RMS_cal
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_data
@@ -328,7 +332,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RMS_cal
 </UL>
 
-<P><STRONG><a name="[f9]"></a>__aeabi_cfcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cfcmple.o(.text), UNUSED)
+<P><STRONG><a name="[fa]"></a>__aeabi_cfcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cfcmple.o(.text), UNUSED)
 
 <P><STRONG><a name="[b0]"></a>__aeabi_cfcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;measure_data_AC
@@ -338,7 +342,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;measure_data_AC
 </UL>
 
-<P><STRONG><a name="[fa]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
+<P><STRONG><a name="[fb]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
 
 <P><STRONG><a name="[9b]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
@@ -352,7 +356,7 @@ Global Symbols
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
 
-<P><STRONG><a name="[fb]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[fc]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[47]"></a>_float_round</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, fepilogue.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
@@ -425,7 +429,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[fc]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[fd]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[50]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
@@ -434,7 +438,7 @@ Global Symbols
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2ulz
 </UL>
 
-<P><STRONG><a name="[fd]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[fe]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[4f]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
@@ -443,13 +447,13 @@ Global Symbols
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2ulz
 </UL>
 
-<P><STRONG><a name="[fe]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[ff]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[52]"></a>__aeabi_lasr</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, llsshr.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 
-<P><STRONG><a name="[ff]"></a>_ll_sshift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llsshr.o(.text), UNUSED)
+<P><STRONG><a name="[100]"></a>_ll_sshift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llsshr.o(.text), UNUSED)
 
 <P><STRONG><a name="[54]"></a>_double_round</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, depilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = _double_round
@@ -469,9 +473,9 @@ Global Symbols
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 
-<P><STRONG><a name="[100]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[101]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
-<P><STRONG><a name="[101]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[102]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
 <P><STRONG><a name="[67]"></a>ADC_Cmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f10x_adc.o(i.ADC_Cmd))
 <BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Configuration
@@ -686,8 +690,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;measure_data_AC
 </UL>
 
-<P><STRONG><a name="[80]"></a>P_CAL</STRONG> (Thumb, 70 bytes, Stack size 32 bytes, measure.o(i.P_CAL))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = P_CAL &rArr; __aeabi_fadd &rArr; _float_epilogue
+<P><STRONG><a name="[80]"></a>P_CAL</STRONG> (Thumb, 90 bytes, Stack size 40 bytes, measure.o(i.P_CAL))
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = P_CAL &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
@@ -862,24 +866,24 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[102]"></a>__1printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
+<P><STRONG><a name="[103]"></a>__1printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
 
-<P><STRONG><a name="[b2]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf))
+<P><STRONG><a name="[b3]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_data
 </UL>
 
-<P><STRONG><a name="[103]"></a>__c89printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
+<P><STRONG><a name="[104]"></a>__c89printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
 
-<P><STRONG><a name="[104]"></a>printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
+<P><STRONG><a name="[105]"></a>printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
 
 <P><STRONG><a name="[96]"></a>__0sprintf</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[105]"></a>__1sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+<P><STRONG><a name="[106]"></a>__1sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 
 <P><STRONG><a name="[a4]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2sprintf
@@ -887,17 +891,17 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display
 </UL>
 
-<P><STRONG><a name="[106]"></a>__c89sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+<P><STRONG><a name="[107]"></a>__c89sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 
-<P><STRONG><a name="[107]"></a>sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+<P><STRONG><a name="[108]"></a>sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
 
-<P><STRONG><a name="[108]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[109]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[109]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[10a]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[10a]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[10b]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[b3]"></a>__set_errno</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, errno.o(i.__set_errno))
+<P><STRONG><a name="[b4]"></a>__set_errno</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, errno.o(i.__set_errno))
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
 </UL>
 
@@ -937,9 +941,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_MicroDelay
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Delay
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_10MicroDelay
+<BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_MicroDelay
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Delay
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_10MicroDelay
 </UL>
 
 <P><STRONG><a name="[a1]"></a>display</STRONG> (Thumb, 348 bytes, Stack size 40 bytes, display.o(i.display))
@@ -1024,12 +1028,13 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getdata_time
 </UL>
 
-<P><STRONG><a name="[ae]"></a>send_data</STRONG> (Thumb, 204 bytes, Stack size 128 bytes, measure.o(i.send_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = send_data &rArr; __2printf
+<P><STRONG><a name="[ae]"></a>send_data</STRONG> (Thumb, 192 bytes, Stack size 112 bytes, measure.o(i.send_data))
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = send_data &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1038,12 +1043,12 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = sqrt &rArr; _dsqrt &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RMS_cal
 </UL>
 
-<P><STRONG><a name="[b4]"></a>u8g_10MicroDelay</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, u8g_arm.o(i.u8g_10MicroDelay))
+<P><STRONG><a name="[b5]"></a>u8g_10MicroDelay</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, u8g_arm.o(i.u8g_10MicroDelay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = u8g_10MicroDelay &rArr; delay_micro_seconds
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_micro_seconds
@@ -1051,43 +1056,43 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_com_hw_i2c_fn
 </UL>
 
-<P><STRONG><a name="[b5]"></a>u8g_Begin</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, u8g_ll_api.o(i.u8g_Begin))
+<P><STRONG><a name="[b6]"></a>u8g_Begin</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, u8g_ll_api.o(i.u8g_Begin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = u8g_Begin &rArr; u8g_UpdateDimension &rArr; u8g_GetWidthLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateDimension
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitLL
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateDimension
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitLL
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitComFn
 </UL>
 
-<P><STRONG><a name="[ba]"></a>u8g_Delay</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, u8g_arm.o(i.u8g_Delay))
+<P><STRONG><a name="[bb]"></a>u8g_Delay</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, u8g_arm.o(i.u8g_Delay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = u8g_Delay &rArr; delay_micro_seconds
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_micro_seconds
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
 </UL>
 
-<P><STRONG><a name="[bb]"></a>u8g_Draw8Pixel</STRONG> (Thumb, 36 bytes, Stack size 32 bytes, u8g_ll_api.o(i.u8g_Draw8Pixel))
+<P><STRONG><a name="[bc]"></a>u8g_Draw8Pixel</STRONG> (Thumb, 36 bytes, Stack size 32 bytes, u8g_ll_api.o(i.u8g_Draw8Pixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = u8g_Draw8Pixel &rArr; u8g_Draw8PixelLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Draw8PixelLL
+<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Draw8PixelLL
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph180
+<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph180
 </UL>
 
-<P><STRONG><a name="[bc]"></a>u8g_Draw8PixelLL</STRONG> (Thumb, 48 bytes, Stack size 32 bytes, u8g_ll_api.o(i.u8g_Draw8PixelLL))
+<P><STRONG><a name="[bd]"></a>u8g_Draw8PixelLL</STRONG> (Thumb, 48 bytes, Stack size 32 bytes, u8g_ll_api.o(i.u8g_Draw8PixelLL))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = u8g_Draw8PixelLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Draw8Pixel
+<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Draw8Pixel
 </UL>
 
 <P><STRONG><a name="[a5]"></a>u8g_DrawStr180</STRONG> (Thumb, 72 bytes, Stack size 32 bytes, u8g_font.o(i.u8g_DrawStr180))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = u8g_DrawStr180 &rArr; u8g_draw_glyph180 &rArr; u8g_Draw8Pixel &rArr; u8g_Draw8PixelLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph180
+<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph180
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display
 </UL>
@@ -1095,59 +1100,59 @@ Global Symbols
 <P><STRONG><a name="[a2]"></a>u8g_FirstPage</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_ll_api.o(i.u8g_FirstPage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = u8g_FirstPage &rArr; u8g_FirstPageLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_FirstPageLL
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_FirstPageLL
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display
 </UL>
 
-<P><STRONG><a name="[bf]"></a>u8g_FirstPageLL</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_FirstPageLL))
+<P><STRONG><a name="[c0]"></a>u8g_FirstPageLL</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_FirstPageLL))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = u8g_FirstPageLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_FirstPage
 </UL>
 
-<P><STRONG><a name="[c0]"></a>u8g_GetGlyph</STRONG> (Thumb, 196 bytes, Stack size 48 bytes, u8g_font.o(i.u8g_GetGlyph))
+<P><STRONG><a name="[c1]"></a>u8g_GetGlyph</STRONG> (Thumb, 196 bytes, Stack size 48 bytes, u8g_font.o(i.u8g_GetGlyph))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = u8g_GetGlyph &rArr; u8g_CopyGlyphDataToCache &rArr; u8g_font_GetFormat
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontStartEncoding
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontEndEncoding
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetEncoding97Pos
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetEncoding65Pos
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFormat
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontGlyphStructureSize
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_FillEmptyGlyphCache
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_CopyGlyphDataToCache
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontStartEncoding
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontEndEncoding
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetEncoding97Pos
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetEncoding65Pos
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFormat
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontGlyphStructureSize
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_FillEmptyGlyphCache
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_CopyGlyphDataToCache
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph180
+<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph180
 </UL>
 
-<P><STRONG><a name="[c7]"></a>u8g_GetHeightLL</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_GetHeightLL))
+<P><STRONG><a name="[c8]"></a>u8g_GetHeightLL</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_GetHeightLL))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = u8g_GetHeightLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateDimension
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateDimension
 </UL>
 
-<P><STRONG><a name="[c8]"></a>u8g_GetModeLL</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_GetModeLL))
+<P><STRONG><a name="[c9]"></a>u8g_GetModeLL</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_GetModeLL))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = u8g_GetModeLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateDimension
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateDimension
 </UL>
 
-<P><STRONG><a name="[c9]"></a>u8g_GetWidthLL</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_GetWidthLL))
+<P><STRONG><a name="[ca]"></a>u8g_GetWidthLL</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_GetWidthLL))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = u8g_GetWidthLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateDimension
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateDimension
 </UL>
 
-<P><STRONG><a name="[e9]"></a>u8g_InitCom</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_InitCom))
+<P><STRONG><a name="[ea]"></a>u8g_InitCom</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_InitCom))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = u8g_InitCom
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_adafruit_128x64_fn
@@ -1160,29 +1165,29 @@ Global Symbols
 <P><STRONG><a name="[a8]"></a>u8g_InitComFn</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_InitComFn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = u8g_InitComFn &rArr; u8g_Begin &rArr; u8g_UpdateDimension &rArr; u8g_GetWidthLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Begin
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_init_data
+<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Begin
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_init_data
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_init
 </UL>
 
-<P><STRONG><a name="[b6]"></a>u8g_InitLL</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_InitLL))
+<P><STRONG><a name="[b7]"></a>u8g_InitLL</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_InitLL))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = u8g_InitLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Begin
+<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Begin
 </UL>
 
-<P><STRONG><a name="[cb]"></a>u8g_IsBBXIntersection</STRONG> (Thumb, 82 bytes, Stack size 32 bytes, u8g_clip.o(i.u8g_IsBBXIntersection))
+<P><STRONG><a name="[cc]"></a>u8g_IsBBXIntersection</STRONG> (Thumb, 82 bytes, Stack size 32 bytes, u8g_clip.o(i.u8g_IsBBXIntersection))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = u8g_IsBBXIntersection &rArr; u8g_is_intersection_decision_tree
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_is_intersection_decision_tree
+<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_is_intersection_decision_tree
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph180
+<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph180
 </UL>
 
-<P><STRONG><a name="[cd]"></a>u8g_MicroDelay</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, u8g_arm.o(i.u8g_MicroDelay))
+<P><STRONG><a name="[ce]"></a>u8g_MicroDelay</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, u8g_arm.o(i.u8g_MicroDelay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = u8g_MicroDelay &rArr; delay_micro_seconds
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_micro_seconds
@@ -1193,20 +1198,20 @@ Global Symbols
 <P><STRONG><a name="[a6]"></a>u8g_NextPage</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, u8g_ll_api.o(i.u8g_NextPage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = u8g_NextPage &rArr; u8g_NextPageLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_NextPageLL
+<BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_NextPageLL
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display
 </UL>
 
-<P><STRONG><a name="[ce]"></a>u8g_NextPageLL</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_NextPageLL))
+<P><STRONG><a name="[cf]"></a>u8g_NextPageLL</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, u8g_ll_api.o(i.u8g_NextPageLL))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = u8g_NextPageLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_NextPage
 </UL>
 
-<P><STRONG><a name="[d9]"></a>u8g_SetAddress</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_SetAddress))
+<P><STRONG><a name="[da]"></a>u8g_SetAddress</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_SetAddress))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = u8g_SetAddress
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_adafruit_128x64_fn
@@ -1214,10 +1219,10 @@ Global Symbols
 <LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_128x64_2x_fn
 <LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_sh1106_128x64_fn
 <LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_sh1106_128x64_2x_fn
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
 </UL>
 
-<P><STRONG><a name="[da]"></a>u8g_SetChipSelect</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_SetChipSelect))
+<P><STRONG><a name="[db]"></a>u8g_SetChipSelect</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_SetChipSelect))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = u8g_SetChipSelect
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_adafruit_128x64_fn
@@ -1225,64 +1230,64 @@ Global Symbols
 <LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_128x64_2x_fn
 <LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_sh1106_128x64_fn
 <LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_sh1106_128x64_2x_fn
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
 </UL>
 
-<P><STRONG><a name="[ef]"></a>u8g_SetColorIndex</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, u8g_ll_api.o(i.u8g_SetColorIndex))
-<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_init_data
+<P><STRONG><a name="[f0]"></a>u8g_SetColorIndex</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, u8g_ll_api.o(i.u8g_SetColorIndex))
+<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_init_data
 </UL>
 
 <P><STRONG><a name="[a3]"></a>u8g_SetFont</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, u8g_font.o(i.u8g_SetFont))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = u8g_SetFont &rArr; u8g_UpdateRefHeight &rArr; u8g_font_GetLowerGDescent
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetFontPosBaseline
+<BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetFontPosBaseline
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display
 </UL>
 
-<P><STRONG><a name="[d0]"></a>u8g_SetFontPosBaseline</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, u8g_font.o(i.u8g_SetFontPosBaseline))
+<P><STRONG><a name="[d1]"></a>u8g_SetFontPosBaseline</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, u8g_font.o(i.u8g_SetFontPosBaseline))
 <BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetFont
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_init_data
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_init_data
 </UL>
 
-<P><STRONG><a name="[dc]"></a>u8g_SetResetHigh</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, u8g_com_api.o(i.u8g_SetResetHigh))
+<P><STRONG><a name="[dd]"></a>u8g_SetResetHigh</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, u8g_com_api.o(i.u8g_SetResetHigh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = u8g_SetResetHigh
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
 </UL>
 
-<P><STRONG><a name="[db]"></a>u8g_SetResetLow</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, u8g_com_api.o(i.u8g_SetResetLow))
+<P><STRONG><a name="[dc]"></a>u8g_SetResetLow</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, u8g_com_api.o(i.u8g_SetResetLow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = u8g_SetResetLow
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
 </UL>
 
-<P><STRONG><a name="[b7]"></a>u8g_UpdateDimension</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, u8g_ll_api.o(i.u8g_UpdateDimension))
+<P><STRONG><a name="[b8]"></a>u8g_UpdateDimension</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, u8g_ll_api.o(i.u8g_UpdateDimension))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = u8g_UpdateDimension &rArr; u8g_GetWidthLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetWidthLL
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetModeLL
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetHeightLL
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_call_dev_fn
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetWidthLL
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetModeLL
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetHeightLL
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Begin
+<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Begin
 </UL>
 
-<P><STRONG><a name="[cf]"></a>u8g_UpdateRefHeight</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, u8g_font.o(i.u8g_UpdateRefHeight))
+<P><STRONG><a name="[d0]"></a>u8g_UpdateRefHeight</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, u8g_font.o(i.u8g_UpdateRefHeight))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = u8g_UpdateRefHeight &rArr; u8g_font_GetLowerGDescent
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetLowerGDescent
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontXDescent
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontXAscent
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontDescent
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontAscent
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetCapitalAHeight
+<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetLowerGDescent
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontXDescent
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontXAscent
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontDescent
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontAscent
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetCapitalAHeight
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetFont
 </UL>
 
-<P><STRONG><a name="[d8]"></a>u8g_WriteByte</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_WriteByte))
+<P><STRONG><a name="[d9]"></a>u8g_WriteByte</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_WriteByte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = u8g_WriteByte
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_adafruit_128x64_fn
@@ -1290,18 +1295,18 @@ Global Symbols
 <LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_128x64_2x_fn
 <LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_sh1106_128x64_fn
 <LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_sh1106_128x64_2x_fn
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
 </UL>
 
-<P><STRONG><a name="[d7]"></a>u8g_WriteEscSeqP</STRONG> (Thumb, 190 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_WriteEscSeqP))
+<P><STRONG><a name="[d8]"></a>u8g_WriteEscSeqP</STRONG> (Thumb, 190 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_WriteEscSeqP))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = u8g_WriteEscSeqP &rArr; u8g_WriteByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Delay
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetResetLow
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetResetHigh
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Delay
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetResetLow
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetResetHigh
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_adafruit_128x64_fn
 <LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_128x64_fn
@@ -1310,32 +1315,32 @@ Global Symbols
 <LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_sh1106_128x64_2x_fn
 </UL>
 
-<P><STRONG><a name="[ea]"></a>u8g_WriteSequence</STRONG> (Thumb, 30 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_WriteSequence))
+<P><STRONG><a name="[eb]"></a>u8g_WriteSequence</STRONG> (Thumb, 30 bytes, Stack size 24 bytes, u8g_com_api.o(i.u8g_WriteSequence))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = u8g_WriteSequence
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_128x64_2x_fn
 <LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_sh1106_128x64_2x_fn
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_WriteBuffer
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_WriteBuffer
 </UL>
 
-<P><STRONG><a name="[bd]"></a>u8g_call_dev_fn</STRONG> (Thumb, 30 bytes, Stack size 24 bytes, u8g_ll_api.o(i.u8g_call_dev_fn))
+<P><STRONG><a name="[be]"></a>u8g_call_dev_fn</STRONG> (Thumb, 30 bytes, Stack size 24 bytes, u8g_ll_api.o(i.u8g_call_dev_fn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = u8g_call_dev_fn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateDimension
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_NextPageLL
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitLL
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetWidthLL
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetModeLL
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetHeightLL
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_FirstPageLL
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Draw8PixelLL
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateDimension
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_NextPageLL
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitLL
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetWidthLL
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetModeLL
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetHeightLL
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_FirstPageLL
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Draw8PixelLL
 </UL>
 
 <P><STRONG><a name="[40]"></a>u8g_com_hw_i2c_fn</STRONG> (Thumb, 160 bytes, Stack size 152 bytes, u8g_arm.o(i.u8g_com_hw_i2c_fn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 252<LI>Call Chain = u8g_com_hw_i2c_fn &rArr; I2C_LowLevel_Init &rArr; I2C_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_MicroDelay
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_10MicroDelay
+<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_MicroDelay
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_10MicroDelay
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_LowLevel_Init
@@ -1347,31 +1352,31 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> u8g_dev_ssd1306_128x64.o(.data)
 </UL>
-<P><STRONG><a name="[dd]"></a>u8g_dev_pb16v1_base_fn</STRONG> (Thumb, 182 bytes, Stack size 24 bytes, u8g_pb16v1.o(i.u8g_dev_pb16v1_base_fn))
+<P><STRONG><a name="[de]"></a>u8g_dev_pb16v1_base_fn</STRONG> (Thumb, 182 bytes, Stack size 24 bytes, u8g_pb16v1.o(i.u8g_dev_pb16v1_base_fn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = u8g_dev_pb16v1_base_fn &rArr; u8g_pb16v1_Set8PixelOpt2 &rArr; u8g_pb16v1_SetPixel &rArr; u8g_pb16v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_GetPageBox
-<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_page_Next
-<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_page_First
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_SetPixel
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_Set8PixelOpt2
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_Clear
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_Is8PixelVisible
+<BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_GetPageBox
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_page_Next
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_page_First
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_SetPixel
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_Set8PixelOpt2
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_Clear
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_Is8PixelVisible
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_128x64_2x_fn
 <LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_sh1106_128x64_2x_fn
 </UL>
 
-<P><STRONG><a name="[e5]"></a>u8g_dev_pb8v1_base_fn</STRONG> (Thumb, 182 bytes, Stack size 24 bytes, u8g_pb8v1.o(i.u8g_dev_pb8v1_base_fn))
+<P><STRONG><a name="[e6]"></a>u8g_dev_pb8v1_base_fn</STRONG> (Thumb, 182 bytes, Stack size 24 bytes, u8g_pb8v1.o(i.u8g_dev_pb8v1_base_fn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = u8g_dev_pb8v1_base_fn &rArr; u8g_pb8v1_Set8PixelOpt2 &rArr; u8g_pb8v1_SetPixel &rArr; u8g_pb8v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_GetPageBox
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_Clear
-<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_page_Next
-<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_page_First
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_SetPixel
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_Set8PixelOpt2
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_Is8PixelVisible
+<BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_GetPageBox
+<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_Clear
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_page_Next
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_page_First
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_SetPixel
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_Set8PixelOpt2
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_Is8PixelVisible
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_adafruit_128x64_fn
 <LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_128x64_fn
@@ -1381,250 +1386,250 @@ Global Symbols
 <P><STRONG><a name="[5]"></a>u8g_dev_sh1106_128x64_2x_fn</STRONG> (Thumb, 240 bytes, Stack size 24 bytes, u8g_dev_ssd1306_128x64.o(i.u8g_dev_sh1106_128x64_2x_fn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = u8g_dev_sh1106_128x64_2x_fn &rArr; u8g_dev_pb16v1_base_fn &rArr; u8g_pb16v1_Set8PixelOpt2 &rArr; u8g_pb16v1_SetPixel &rArr; u8g_pb16v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteSequence
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitCom
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteSequence
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitCom
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> u8g_dev_ssd1306_128x64.o(.data)
 </UL>
 <P><STRONG><a name="[4]"></a>u8g_dev_sh1106_128x64_fn</STRONG> (Thumb, 172 bytes, Stack size 24 bytes, u8g_dev_ssd1306_128x64.o(i.u8g_dev_sh1106_128x64_fn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = u8g_dev_sh1106_128x64_fn &rArr; u8g_dev_pb8v1_base_fn &rArr; u8g_pb8v1_Set8PixelOpt2 &rArr; u8g_pb8v1_SetPixel &rArr; u8g_pb8v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_WriteBuffer
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitCom
+<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_WriteBuffer
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitCom
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> u8g_dev_ssd1306_128x64.o(.data)
 </UL>
 <P><STRONG><a name="[3]"></a>u8g_dev_ssd1306_128x64_2x_fn</STRONG> (Thumb, 240 bytes, Stack size 24 bytes, u8g_dev_ssd1306_128x64.o(i.u8g_dev_ssd1306_128x64_2x_fn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = u8g_dev_ssd1306_128x64_2x_fn &rArr; u8g_dev_pb16v1_base_fn &rArr; u8g_pb16v1_Set8PixelOpt2 &rArr; u8g_pb16v1_SetPixel &rArr; u8g_pb16v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteSequence
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitCom
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteSequence
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitCom
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> u8g_dev_ssd1306_128x64.o(.data)
 </UL>
 <P><STRONG><a name="[0]"></a>u8g_dev_ssd1306_128x64_fn</STRONG> (Thumb, 172 bytes, Stack size 24 bytes, u8g_dev_ssd1306_128x64.o(i.u8g_dev_ssd1306_128x64_fn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = u8g_dev_ssd1306_128x64_fn &rArr; u8g_dev_pb8v1_base_fn &rArr; u8g_pb8v1_Set8PixelOpt2 &rArr; u8g_pb8v1_SetPixel &rArr; u8g_pb8v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_WriteBuffer
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitCom
+<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_WriteBuffer
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitCom
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> u8g_dev_ssd1306_128x64.o(.data)
 </UL>
 <P><STRONG><a name="[2]"></a>u8g_dev_ssd1306_adafruit_128x64_fn</STRONG> (Thumb, 172 bytes, Stack size 24 bytes, u8g_dev_ssd1306_128x64.o(i.u8g_dev_ssd1306_adafruit_128x64_fn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = u8g_dev_ssd1306_adafruit_128x64_fn &rArr; u8g_dev_pb8v1_base_fn &rArr; u8g_pb8v1_Set8PixelOpt2 &rArr; u8g_pb8v1_SetPixel &rArr; u8g_pb8v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_WriteBuffer
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitCom
+<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_WriteBuffer
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteEscSeqP
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteByte
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetChipSelect
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetAddress
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitCom
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> u8g_dev_ssd1306_128x64.o(.data)
 </UL>
-<P><STRONG><a name="[be]"></a>u8g_draw_glyph180</STRONG> (Thumb, 210 bytes, Stack size 64 bytes, u8g_font.o(i.u8g_draw_glyph180))
+<P><STRONG><a name="[bf]"></a>u8g_draw_glyph180</STRONG> (Thumb, 210 bytes, Stack size 64 bytes, u8g_font.o(i.u8g_draw_glyph180))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = u8g_draw_glyph180 &rArr; u8g_Draw8Pixel &rArr; u8g_Draw8PixelLL &rArr; u8g_call_dev_fn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_IsBBXIntersection
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Draw8Pixel
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetGlyphDataStart
+<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_IsBBXIntersection
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_Draw8Pixel
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetGlyphDataStart
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_DrawStr180
 </UL>
 
-<P><STRONG><a name="[d1]"></a>u8g_font_GetCapitalAHeight</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetCapitalAHeight))
+<P><STRONG><a name="[d2]"></a>u8g_font_GetCapitalAHeight</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetCapitalAHeight))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetCapitalAHeight
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
 </UL>
 
-<P><STRONG><a name="[c5]"></a>u8g_font_GetEncoding65Pos</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetEncoding65Pos))
+<P><STRONG><a name="[c6]"></a>u8g_font_GetEncoding65Pos</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetEncoding65Pos))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetEncoding65Pos
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_word
+<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_word
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
 </UL>
 
-<P><STRONG><a name="[c4]"></a>u8g_font_GetEncoding97Pos</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetEncoding97Pos))
+<P><STRONG><a name="[c5]"></a>u8g_font_GetEncoding97Pos</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetEncoding97Pos))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetEncoding97Pos
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_word
+<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_word
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
 </UL>
 
-<P><STRONG><a name="[d5]"></a>u8g_font_GetFontAscent</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontAscent))
+<P><STRONG><a name="[d6]"></a>u8g_font_GetFontAscent</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontAscent))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetFontAscent
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
 </UL>
 
-<P><STRONG><a name="[d6]"></a>u8g_font_GetFontDescent</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontDescent))
+<P><STRONG><a name="[d7]"></a>u8g_font_GetFontDescent</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontDescent))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetFontDescent
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
 </UL>
 
-<P><STRONG><a name="[c3]"></a>u8g_font_GetFontEndEncoding</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontEndEncoding))
+<P><STRONG><a name="[c4]"></a>u8g_font_GetFontEndEncoding</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontEndEncoding))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetFontEndEncoding
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
 </UL>
 
-<P><STRONG><a name="[c2]"></a>u8g_font_GetFontStartEncoding</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontStartEncoding))
+<P><STRONG><a name="[c3]"></a>u8g_font_GetFontStartEncoding</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontStartEncoding))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetFontStartEncoding
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
 </UL>
 
-<P><STRONG><a name="[d3]"></a>u8g_font_GetFontXAscent</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontXAscent))
+<P><STRONG><a name="[d4]"></a>u8g_font_GetFontXAscent</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontXAscent))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetFontXAscent
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
 </UL>
 
-<P><STRONG><a name="[d4]"></a>u8g_font_GetFontXDescent</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontXDescent))
+<P><STRONG><a name="[d5]"></a>u8g_font_GetFontXDescent</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontXDescent))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetFontXDescent
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
 </UL>
 
-<P><STRONG><a name="[d2]"></a>u8g_font_GetLowerGDescent</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetLowerGDescent))
+<P><STRONG><a name="[d3]"></a>u8g_font_GetLowerGDescent</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetLowerGDescent))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetLowerGDescent
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_UpdateRefHeight
 </UL>
 
 <P><STRONG><a name="[41]"></a>u8g_font_calc_vref_font</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, u8g_font.o(i.u8g_font_calc_vref_font))
 <BR>[Address Reference Count : 1]<UL><LI> u8g_font.o(i.u8g_SetFontPosBaseline)
 </UL>
-<P><STRONG><a name="[e2]"></a>u8g_page_First</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, u8g_page.o(i.u8g_page_First))
-<BR><BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
+<P><STRONG><a name="[e3]"></a>u8g_page_First</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, u8g_page.o(i.u8g_page_First))
+<BR><BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
 </UL>
 
-<P><STRONG><a name="[e3]"></a>u8g_page_Next</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, u8g_page.o(i.u8g_page_Next))
-<BR><BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
+<P><STRONG><a name="[e4]"></a>u8g_page_Next</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, u8g_page.o(i.u8g_page_Next))
+<BR><BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
 </UL>
 
-<P><STRONG><a name="[e1]"></a>u8g_pb16v1_Clear</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, u8g_pb16v1.o(i.u8g_pb16v1_Clear))
-<BR><BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
+<P><STRONG><a name="[e2]"></a>u8g_pb16v1_Clear</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, u8g_pb16v1.o(i.u8g_pb16v1_Clear))
+<BR><BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
 </UL>
 
-<P><STRONG><a name="[df]"></a>u8g_pb16v1_Set8PixelOpt2</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, u8g_pb16v1.o(i.u8g_pb16v1_Set8PixelOpt2))
+<P><STRONG><a name="[e0]"></a>u8g_pb16v1_Set8PixelOpt2</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, u8g_pb16v1.o(i.u8g_pb16v1_Set8PixelOpt2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = u8g_pb16v1_Set8PixelOpt2 &rArr; u8g_pb16v1_SetPixel &rArr; u8g_pb16v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_SetPixel
+<BR>[Calls]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_SetPixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
+<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
 </UL>
 
-<P><STRONG><a name="[e0]"></a>u8g_pb16v1_SetPixel</STRONG> (Thumb, 52 bytes, Stack size 12 bytes, u8g_pb16v1.o(i.u8g_pb16v1_SetPixel))
+<P><STRONG><a name="[e1]"></a>u8g_pb16v1_SetPixel</STRONG> (Thumb, 52 bytes, Stack size 12 bytes, u8g_pb16v1.o(i.u8g_pb16v1_SetPixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = u8g_pb16v1_SetPixel &rArr; u8g_pb16v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_set_pixel
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_set_pixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_Set8PixelOpt2
+<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_Set8PixelOpt2
 </UL>
 
-<P><STRONG><a name="[f0]"></a>u8g_pb16v1_set_pixel</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, u8g_pb16v1.o(i.u8g_pb16v1_set_pixel))
+<P><STRONG><a name="[f1]"></a>u8g_pb16v1_set_pixel</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, u8g_pb16v1.o(i.u8g_pb16v1_set_pixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = u8g_pb16v1_set_pixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_SetPixel
+<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb16v1_SetPixel
 </UL>
 
-<P><STRONG><a name="[e6]"></a>u8g_pb8v1_Set8PixelOpt2</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, u8g_pb8v1.o(i.u8g_pb8v1_Set8PixelOpt2))
+<P><STRONG><a name="[e7]"></a>u8g_pb8v1_Set8PixelOpt2</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, u8g_pb8v1.o(i.u8g_pb8v1_Set8PixelOpt2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = u8g_pb8v1_Set8PixelOpt2 &rArr; u8g_pb8v1_SetPixel &rArr; u8g_pb8v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_SetPixel
+<BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_SetPixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
+<BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
 </UL>
 
-<P><STRONG><a name="[e7]"></a>u8g_pb8v1_SetPixel</STRONG> (Thumb, 52 bytes, Stack size 12 bytes, u8g_pb8v1.o(i.u8g_pb8v1_SetPixel))
+<P><STRONG><a name="[e8]"></a>u8g_pb8v1_SetPixel</STRONG> (Thumb, 52 bytes, Stack size 12 bytes, u8g_pb8v1.o(i.u8g_pb8v1_SetPixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = u8g_pb8v1_SetPixel &rArr; u8g_pb8v1_set_pixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_set_pixel
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_set_pixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_Set8PixelOpt2
+<BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_Set8PixelOpt2
 </UL>
 
-<P><STRONG><a name="[f1]"></a>u8g_pb8v1_set_pixel</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, u8g_pb8v1.o(i.u8g_pb8v1_set_pixel))
+<P><STRONG><a name="[f2]"></a>u8g_pb8v1_set_pixel</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, u8g_pb8v1.o(i.u8g_pb8v1_set_pixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = u8g_pb8v1_set_pixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_SetPixel
+<BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb8v1_SetPixel
 </UL>
 
-<P><STRONG><a name="[e8]"></a>u8g_pb_Clear</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, u8g_pb.o(i.u8g_pb_Clear))
-<BR><BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
+<P><STRONG><a name="[e9]"></a>u8g_pb_Clear</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, u8g_pb.o(i.u8g_pb_Clear))
+<BR><BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
 </UL>
 
-<P><STRONG><a name="[e4]"></a>u8g_pb_GetPageBox</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, u8g_pb.o(i.u8g_pb_GetPageBox))
-<BR><BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
+<P><STRONG><a name="[e5]"></a>u8g_pb_GetPageBox</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, u8g_pb.o(i.u8g_pb_GetPageBox))
+<BR><BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
 </UL>
 
-<P><STRONG><a name="[de]"></a>u8g_pb_Is8PixelVisible</STRONG> (Thumb, 62 bytes, Stack size 20 bytes, u8g_pb.o(i.u8g_pb_Is8PixelVisible))
+<P><STRONG><a name="[df]"></a>u8g_pb_Is8PixelVisible</STRONG> (Thumb, 62 bytes, Stack size 20 bytes, u8g_pb.o(i.u8g_pb_Is8PixelVisible))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = u8g_pb_Is8PixelVisible &rArr; u8g_pb_IsYIntersection
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_IsYIntersection
+<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_IsYIntersection
 </UL>
-<BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
+<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb16v1_base_fn
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_pb8v1_base_fn
 </UL>
 
-<P><STRONG><a name="[f2]"></a>u8g_pb_IsYIntersection</STRONG> (Thumb, 64 bytes, Stack size 20 bytes, u8g_pb.o(i.u8g_pb_IsYIntersection))
+<P><STRONG><a name="[f3]"></a>u8g_pb_IsYIntersection</STRONG> (Thumb, 64 bytes, Stack size 20 bytes, u8g_pb.o(i.u8g_pb_IsYIntersection))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = u8g_pb_IsYIntersection
 </UL>
-<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_Is8PixelVisible
+<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_pb_Is8PixelVisible
 </UL>
 
-<P><STRONG><a name="[eb]"></a>u8g_pb_WriteBuffer</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, u8g_pb.o(i.u8g_pb_WriteBuffer))
+<P><STRONG><a name="[ec]"></a>u8g_pb_WriteBuffer</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, u8g_pb.o(i.u8g_pb_WriteBuffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = u8g_pb_WriteBuffer &rArr; u8g_WriteSequence
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteSequence
+<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_WriteSequence
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_adafruit_128x64_fn
 <LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_dev_ssd1306_128x64_fn
@@ -1651,73 +1656,73 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 
-<P><STRONG><a name="[cc]"></a>u8g_is_intersection_decision_tree</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, u8g_clip.o(i.u8g_is_intersection_decision_tree))
+<P><STRONG><a name="[cd]"></a>u8g_is_intersection_decision_tree</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, u8g_clip.o(i.u8g_is_intersection_decision_tree))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_is_intersection_decision_tree
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_IsBBXIntersection
+<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_IsBBXIntersection
 </UL>
 
-<P><STRONG><a name="[b8]"></a>u8g_CopyGlyphDataToCache</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, u8g_font.o(i.u8g_CopyGlyphDataToCache))
+<P><STRONG><a name="[b9]"></a>u8g_CopyGlyphDataToCache</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, u8g_font.o(i.u8g_CopyGlyphDataToCache))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = u8g_CopyGlyphDataToCache &rArr; u8g_font_GetFormat
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFormat
+<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFormat
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
-</UL>
-
-<P><STRONG><a name="[c6]"></a>u8g_FillEmptyGlyphCache</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, u8g_font.o(i.u8g_FillEmptyGlyphCache))
-<BR><BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
 </UL>
 
-<P><STRONG><a name="[c1]"></a>u8g_font_GetFontGlyphStructureSize</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontGlyphStructureSize))
+<P><STRONG><a name="[c7]"></a>u8g_FillEmptyGlyphCache</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, u8g_font.o(i.u8g_FillEmptyGlyphCache))
+<BR><BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
+</UL>
+
+<P><STRONG><a name="[c2]"></a>u8g_font_GetFontGlyphStructureSize</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFontGlyphStructureSize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = u8g_font_GetFontGlyphStructureSize &rArr; u8g_font_GetFormat
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFormat
+<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFormat
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetGlyphDataStart
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetGlyphDataStart
 </UL>
 
-<P><STRONG><a name="[b9]"></a>u8g_font_GetFormat</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFormat))
+<P><STRONG><a name="[ba]"></a>u8g_font_GetFormat</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, u8g_font.o(i.u8g_font_GetFormat))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_font_GetFormat
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_get_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontGlyphStructureSize
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_CopyGlyphDataToCache
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_GetGlyph
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontGlyphStructureSize
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_CopyGlyphDataToCache
 </UL>
 
-<P><STRONG><a name="[ec]"></a>u8g_font_GetGlyphDataStart</STRONG> (Thumb, 16 bytes, Stack size 16 bytes, u8g_font.o(i.u8g_font_GetGlyphDataStart))
+<P><STRONG><a name="[ed]"></a>u8g_font_GetGlyphDataStart</STRONG> (Thumb, 16 bytes, Stack size 16 bytes, u8g_font.o(i.u8g_font_GetGlyphDataStart))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = u8g_font_GetGlyphDataStart &rArr; u8g_font_GetFontGlyphStructureSize &rArr; u8g_font_GetFormat
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontGlyphStructureSize
+<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontGlyphStructureSize
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph180
-</UL>
-
-<P><STRONG><a name="[ed]"></a>u8g_font_get_byte</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, u8g_font.o(i.u8g_font_get_byte))
-<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetLowerGDescent
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontXDescent
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontXAscent
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontStartEncoding
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontEndEncoding
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontDescent
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontAscent
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetCapitalAHeight
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFormat
+<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_draw_glyph180
 </UL>
 
-<P><STRONG><a name="[ee]"></a>u8g_font_get_word</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, u8g_font.o(i.u8g_font_get_word))
-<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetEncoding97Pos
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetEncoding65Pos
+<P><STRONG><a name="[ee]"></a>u8g_font_get_byte</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, u8g_font.o(i.u8g_font_get_byte))
+<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetLowerGDescent
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontXDescent
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontXAscent
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontStartEncoding
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontEndEncoding
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontDescent
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFontAscent
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetCapitalAHeight
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetFormat
 </UL>
 
-<P><STRONG><a name="[ca]"></a>u8g_init_data</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, u8g_ll_api.o(i.u8g_init_data))
+<P><STRONG><a name="[ef]"></a>u8g_font_get_word</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, u8g_font.o(i.u8g_font_get_word))
+<BR><BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetEncoding97Pos
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_font_GetEncoding65Pos
+</UL>
+
+<P><STRONG><a name="[cb]"></a>u8g_init_data</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, u8g_ll_api.o(i.u8g_init_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = u8g_init_data
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetColorIndex
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetFontPosBaseline
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetColorIndex
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_SetFontPosBaseline
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;u8g_InitComFn
 </UL>

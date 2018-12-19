@@ -180,13 +180,13 @@ float P_CAL(float *value1,float *value2, int len_value)//caculator  Potestas  (w
 {
 	float result =0;
 	int m;
-	int phase_calib = 360;
+	int phase_calib = 59;
 	int _val1, _val2;
 	for(m = 0; m < len_value; m++)
 	{
 		_val1 = (m + phase_calib) - ((m + phase_calib)/len_value)*len_value;
 		//result = result + (*(value1 + m))*(*(value2 + m));
-		result = result + (*(value1 + _val1))*(*(value2 + m));
+		result = result + (*(value1 + m))*(*(value2 + _val1));
 		}
 	result = result/len_value;// result = result / len_value
 	//result = value1*value2*0.002;
@@ -293,11 +293,11 @@ float PF_cal(float u, float i, float p)//caculator POWER FACTOR
 					//convert voltage adc -> current/voltage true
 					for(m=0;m<k+1;m++)
 					{
-						ct1.i[m] = convert_adc(ct1.iadc[m],606);// => scale = calib*n*/R      :n: ti so CT: (100A/50mA); R = 3K3
-					ct2.i[m] = convert_adc(ct2.iadc[m],606);    //mA
+						ct1.i[m] = convert_adc(ct1.iadc[m],1070);// => 606 scale = calib*n*/R      :n: ti so CT: (100A/50mA); R = 3K3
+					ct2.i[m] = convert_adc(ct2.iadc[m],1070);    //mA
 					vtac.u[m] = convert_adc(vtac.uadc[m],472);   //V;// scale = calib*n*(R1+R2)/R2     : n:ti so bien ap 220/10; R1 = 220k; R2 = 10k
 						}
-					//vtac.uadc[25]
+					//ct1.i[40]
 						
 					
 					//caculator  U_RMS
@@ -322,7 +322,7 @@ float PF_cal(float u, float i, float p)//caculator POWER FACTOR
 					vtac.U= RMS_cal(vtac.u,k+1);
 					if(((0 < vtac.time_f)&&(vtac.time_f < 25000))&&(vtac.U>100 ))vtac.f = 1000000/(float)vtac.time_f;
 						else vtac.f = 0;
-							
+							//ct1.i[75]
 					p1.P = P_CAL(ct1.i,vtac.u,k+1);
 					p2.P = P_CAL(ct2.i,vtac.u,k+1);
 					p1.PF = PF_cal(vtac.U, ct1.I, p1.P);
@@ -378,6 +378,10 @@ void avr_data(void)
 void send_data(void)
 {
 	//		printf("send data");
-	printf("?node=solarpvtxac&fulljson={\"UAC_V\":%3.1f,\"I1_A\":%1.3f,\"I2_A\":%1.3f,\"P1_W\":%2.2f,\"P2_W\":%2.2f,\"f_Hz\":%2.2f,\"PF1\":%2.2f,\"PF2\":%2.2f}\n", (float) vtac.Uavr,(float) (ct1.Iavr/1000),(float) (ct2.Iavr/1000),(float) (p1.Pavr/1000),(float) (p2.Pavr/1000),(float) vtac.favr,(float) p1.PFavr,(float) p2.PFavr);
+	printf("?node=solarpvtxac&fulljson={\"UAC_V\":%3.1f,\"I1_A\":%1.3f,\"I2_A\":%1.3f,\"P1_W\":%d,\"P2_W\":%d,\"f_Hz\":%2.2f,\"PF1\":%2.2f,\"PF2\":%2.2f}\n", (float) vtac.Uavr,(float) (ct1.Iavr/1000),(float) (ct2.Iavr/1000), (int) (p1.Pavr/1000),(int) (p2.Pavr/1000),(float) vtac.favr,(float) p1.PFavr,(float) p2.PFavr);
+
+	
+//printf("?node=solarpvtxac&fulljson={\"P2_W\":%d}\n", 8);
+
 	r= 0;	
 }

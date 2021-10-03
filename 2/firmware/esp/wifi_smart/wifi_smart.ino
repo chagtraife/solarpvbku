@@ -61,6 +61,7 @@ void send_data()
   //  const char* host = "192.168.1.50";
   const char* host = "192.168.43.196";
   String url = "http://192.168.43.196/solarpvbku/input/post";
+  //String url = "192.168.43.196/solarpvbku/input/post";
   String apikey  = "&apikey=c9b99dfe3a1f5d356ec3d956b0d633cd";
 
 

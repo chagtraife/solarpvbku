@@ -4,28 +4,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include "stm32f10x_usart.h"
-
-
-
-/*//=======================================================
-         VT1-A5
-CT1-A4         
-CT2-A2         
-
-CT: I_CT1 = V_A4-3.3/2
-		I_CT2 = V_A2-3.3/2
-
-VT: VT1-A5 = V_A5*scale - 3.3/2           //scale = calib*(R1+R2)/R2     : n:ti so bien ap 220/12; R1 = 220k; R2 = 10k
-					 = V_A%*23 - 3.3/2
-//-=======================================================*/
-#define GPIO_CT1 GPIO_Pin_4
-#define GPIO_CT2 GPIO_Pin_2
-#define GPIO_VT1 GPIO_Pin_5
-//----------------------------------------------------------------
-#define ADC_CT1 ADC_Channel_4
-#define ADC_CT2 ADC_Channel_2
-#define ADC_VT1 ADC_Channel_5
-//===============================================================
+#include "display.h"
+#include "measure.h"
 
 
 
@@ -35,9 +15,6 @@ VT: VT1-A5 = V_A5*scale - 3.3/2           //scale = calib*(R1+R2)/R2     : n:ti 
 #define RECV_STATE   2
 #define TRANS_STATE  1
 #define IDLE_STATE   0
-
-
-
 
 
 #ifdef __GNUC__
@@ -52,10 +29,7 @@ VT: VT1-A5 = V_A5*scale - 3.3/2           //scale = calib*(R1+R2)/R2     : n:ti 
 PUTCHAR_PROTOTYPE
 {
 	/* Place your implementation of fputc here */
-	//lcd_Data_Write((u8)ch);
 	USART_SendData(USART1,(u8)ch);
-	//HAL_UART_Transmit(&huart2, (uint8_t*)&ch,1,100);
-	
 	/*Loop until the end of transmission */
 	while (USART_GetFlagStatus(USART1,USART_FLAG_TC)==RESET)
 	{}
@@ -65,53 +39,19 @@ PUTCHAR_PROTOTYPE
 
 
 /*Khoi tao bien cau hinh*/
-GPIO_InitTypeDef			GPIO_InitStructure;
-NVIC_InitTypeDef NVIC_InitStructure;
+//GPIO_InitTypeDef			GPIO_InitStructure;
+NVIC_InitTypeDef 			NVIC_InitStructure;
 USART_InitTypeDef			UART_InitStructure;
-ADC_InitTypeDef 			ADC1_InitStructure;
-DMA_InitTypeDef       DMA_InitStruct;
+//I2C_InitTypeDef				I2C_InitStructure;
 TIM_TimeBaseInitTypeDef TIM_InitStructure;
 
 
-
-
-typedef struct ct
-	{
-		int iadc[500];
-		float i[500];
-		int len_iadc;
-		float I;
-		float Iavr;//(mA)
-		}ct;
-typedef struct vt
-	{
-		int uadc[500];
-		float u[500];
-		int len_uadc;
-		float U;//(0.1V)
-		float Uavr;
-		}vt;
-typedef struct p
-	{
-		float P;
-		float Pavr;//(0.0001W)
-		
-		}p;
-
-ct ct1,ct2;
-vt vtac;
-p p1,p2;
-
-
-
-
 //uint8_t data =10;
-float value_adc1 = 0,sum_adc1=0, adc_tb1=0;
-float value_adc2 = 0,sum_adc2=0, adc_tb2=0;
-int k,r,timeout;
-uint16_t ADC1ConvertedValue[3] = {0,0,0};
-//float i1,i2,u2,_u2;
-//float i_1[500],i_2[500],u_2[500];
+extern int r;
+extern ct ct1,ct2;
+extern vt vtac;
+extern p p1,p2;
+
 
 
 #ifdef TEST
@@ -123,42 +63,33 @@ uint16_t ADC1ConvertedValue[3] = {0,0,0};
 #else
   //int iadc_1[500],iadc_2[500],uadc_2[500];		
 #endif
-int len_iadc_1, len_iadc_2, len_uadc_2;
+
 float I1, I2,U2 ,f, P1, P2, PF;
 volatile extern char state;
 volatile extern char cmd_buf[8];
-
-void measure_data(void);
-void avr_data(void);
-
 
 
 void GPIO_Configuration(void);
 void Delay_ms(uint16_t time);
 void Delay_us(uint16_t time);
-void getdata_time(uint16_t time);
+
 void UART_Configuration (void);
-void ADC_Configuration(void);
-void TIM4_Configuration(void);
-int read_adc(ADC_TypeDef* ADCx,uint8_t ADC_Channel);// adc-> voltage
-float convert_adc(float value_adc, int scale);
-float RMS_cal(float *value, int len_value);// caculator RMS
-float P_CAL(float *value1,float *value2, int len_value);//caculator  Potestas  (w)
-//float PF_cal();//caculator POWER FACTOR
-//float f_cal();//caculator frenquence(Hz)
-unsigned int calcuteCRC16 (unsigned char *pBuff, unsigned char pLen);
-void send_data(void);
-void process_cmd(void);
+void I2C_Configuration(void);
+
 
 int main(void)
 {
+	int counter = 0 ;
 
 	GPIO_Configuration();
 	UART_Configuration();//uart_debug+ uart to ras
-	ADC_Configuration();// CT1/CT2/VT1
+	//I2C_Configuration();
+	measure_init();
+	display_init();
 	//TIM4_Configuration();
 	state  = MEA_STATE;
 	r=0;// l: la so lan MEAS trong khoang thoi gian request cua esp
+	display();
   while (1)
   {	
 		switch(state)
@@ -174,8 +105,8 @@ int main(void)
 			case TRANS_STATE: 
 				{
 					send_data();
+					r = 0;
 					state = MEA_STATE;
-					r=0;
 					break;
 					}
 			case RECV_STATE:
@@ -185,8 +116,13 @@ int main(void)
 					}
 			case MEA_STATE:
 				{
-					measure_data(); // mesure data trong 1 chu ki dien
+					counter++;
+					measure_data_AC(); // mesure data trong 1 chu ki dien
 					avr_data();
+					if(counter >50)
+						{ display();
+							counter = 0;
+							}
 					break;
 					}
 			}
@@ -216,29 +152,7 @@ uint32_t time_n=time*12;
 	while(time_n!=0){time_n--;}
 }
  
-void getdata_time(uint16_t time)
-	{
-    uint32_t time_n=time;
-		int uadc_2_raw =0 ;
-		int iadc_1_raw =0 ;
-		int iadc_2_raw =0 ;
-		vtac.uadc[k] = 0;
-		ct1.iadc[k]=0;
-		ct2.iadc[k]=0;
-	  while(time_n!=0)
-		{
-		 time_n--;
-		 uadc_2_raw = read_adc(ADC1,ADC_VT1);
-		 iadc_1_raw = read_adc(ADC1,ADC_CT1);
-		 iadc_2_raw = read_adc(ADC1,ADC_CT2);
-		 vtac.uadc[k] += uadc_2_raw;
-		 ct1.iadc[k] += iadc_1_raw;
-		 ct2.iadc[k] += iadc_2_raw;
-		}	
-		vtac.uadc[k] /= time;
-		ct1.iadc[k] /= time;
-		ct2.iadc[k] /= time;
-	}
+
 void UART_Configuration (void)
 	{
 		/*Cap clock cho USART và port su dung*/
@@ -277,301 +191,29 @@ void UART_Configuration (void)
 	    USART_ITConfig(USART1, USART_IT_RXNE, ENABLE); //cho phep ngat nhan 
       //USART_ITConfig(USART1, USART_IT_TXE, ENABLE); // cho phep ngat truyen
 	}
-void ADC_Configuration(void)
+	
+void I2C_Configuration(void)
 	{
-		    /* Enable ADC1, DMA1 and GPIO clocks ****************************************/
-    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1 , ENABLE);
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);//ADC1 is connected to the APB2 peripheral bus
+		I2C_InitTypeDef				I2C_InitStructure;
+		/*Cap clock cho I2C và port su dung*/
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C2, ENABLE);
 		
-		    /* DMA1  channel1 configuration **************************************/
-    DMA_DeInit(DMA1_Channel1);
-    DMA_InitStruct.DMA_PeripheralBaseAddr = (uint32_t)&ADC1->DR;//ADC1's data register
-    DMA_InitStruct.DMA_MemoryBaseAddr = (uint32_t)&ADC1ConvertedValue;
-    DMA_InitStruct.DMA_DIR = DMA_DIR_PeripheralSRC;
-    DMA_InitStruct.DMA_BufferSize = 3;
-    DMA_InitStruct.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
-    DMA_InitStruct.DMA_MemoryInc = DMA_MemoryInc_Enable;
-    DMA_InitStruct.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;//Reads 16 bit values
-    DMA_InitStruct.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;//Stores 16 bit values
-    DMA_InitStruct.DMA_Mode = DMA_Mode_Circular;
-    DMA_InitStruct.DMA_Priority = DMA_Priority_High;
-    DMA_InitStruct.DMA_M2M = DMA_M2M_Disable;
-		DMA_Init(DMA1_Channel1, &DMA_InitStruct);
-    DMA_Cmd(DMA1_Channel1, ENABLE);
 		
-		/*cau hinh chan Input cua bo ADC1 la chan CT1*/
-		GPIO_InitStructure.GPIO_Pin =  GPIO_CT1;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+		/* Cau hinh chan SDA, SCL   */
+		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;//PB10:SCL           PB11:SDA
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_OD;
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_Init(GPIOA, &GPIO_InitStructure);
+		GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+		/* cau hinh i2c*/
+			I2C_InitStructure.I2C_Mode = I2C_Mode_I2C;
+		I2C_InitStructure.I2C_DutyCycle = I2C_DutyCycle_2;
+		I2C_InitStructure.I2C_OwnAddress1 = 0;
+		I2C_InitStructure.I2C_Ack = I2C_Ack_Disable;
+		I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
+		I2C_InitStructure.I2C_ClockSpeed = 100000;
+		I2C_Init(I2C2,&I2C_InitStructure);
 		
-				/*cau hinh chan Input cua bo ADC1 la chan CT2*/
-		GPIO_InitStructure.GPIO_Pin =  GPIO_CT2;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
-		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-
-
-		/*cau hinh chan Input cua bo ADC1 la chan PA5==VT1*/
-		GPIO_InitStructure.GPIO_Pin =  GPIO_VT1;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
-		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_Init(GPIOA, &GPIO_InitStructure);
-		
-
-
-		/*cau hinh ADC1*/
-		ADC_DeInit(ADC1);
-		ADC1_InitStructure.ADC_Mode = ADC_Mode_Independent;
-		ADC1_InitStructure.ADC_ScanConvMode = ENABLE;
-		ADC1_InitStructure.ADC_ContinuousConvMode = ENABLE;
-		ADC1_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
-		ADC1_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
-		ADC1_InitStructure.ADC_NbrOfChannel = 3;
-		ADC_Init(ADC1, &ADC1_InitStructure);
-		
-		    /* Select the channels to be read from **************************************/
-    ADC_RegularChannelConfig(ADC1, ADC_CT1, 1, ADC_SampleTime_55Cycles5);//CT1
-    ADC_RegularChannelConfig(ADC1, ADC_CT2, 2, ADC_SampleTime_55Cycles5);//CT2
-    ADC_RegularChannelConfig(ADC1, ADC_VT1, 3, ADC_SampleTime_55Cycles5);//VT1
-
-	  /* Enable ADC1 DMA */
-	  ADC_DMACmd(ADC1, ENABLE);
-//		/* Cau hinh chanel, rank, thoi gian lay mau */
-//		ADC_RegularChannelConfig(ADC1, ADC_Channel_0, 1, ADC_SampleTime_55Cycles5);
-			/* Cho phep bo ADC1 hoa dong */
-		ADC_Cmd(ADC1, ENABLE);   
-//		/* cho phep cam bien nhiet hoat dong */
-//		ADC_TempSensorVrefintCmd(ENABLE);
-		/* Reset thanh ghi cablib  */   
-		ADC_ResetCalibration(ADC1);
-		/* Cho thanh ghi cablib reset xong */
-		while(ADC_GetResetCalibrationStatus(ADC1));
-		/* Khoi dong bo ADC */
-		ADC_StartCalibration(ADC1);	
-		/* Cho trang thai cablib duoc bat */
-		while(ADC_GetCalibrationStatus(ADC1));
-		/* Bat dau chuyen doi ADC */ 
-		ADC_SoftwareStartConvCmd(ADC1, ENABLE);
-
-	}
-	
-	
-	
-void TIM4_Configuration(void)
-{	
-		/*Configure using library*/
-		TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
-	
-		NVIC_InitTypeDef NVIC_InitStructure;
-		/*Enable TIM4 clock*/
-		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
-		/*TIM4 Configuration at 2Hz*/
-		TIM_TimeBaseInitStructure.TIM_Prescaler = 7199;
-		TIM_TimeBaseInitStructure.TIM_Period = 9999;
-		TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-		TIM_TimeBaseInit(TIM4, &TIM_TimeBaseInitStructure);
-		TIM_ClearFlag(TIM4, TIM_FLAG_Update);  // clear update flag
-		TIM_ITConfig( TIM4, TIM_IT_Update, ENABLE); // enable Update Interrupt
-		TIM_Cmd(TIM4, ENABLE); //enable timer 4
-		/*Configure Interrupt request for TIM4*/
-		NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;
-		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-		NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-		NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-		NVIC_Init(&NVIC_InitStructure);	
-}
-int	read_adc(ADC_TypeDef* ADCx,uint8_t ADC_Channel)
-	  {
-    int result,value_adc;
-		value_adc =0;
-		    
-			//Delay_us(100);
-			if(ADC_Channel == ADC_CT1)	value_adc = ADC1ConvertedValue[0];
-			if(ADC_Channel == ADC_CT2)  value_adc = ADC1ConvertedValue[1];
-			if(ADC_Channel == ADC_VT1)  value_adc = ADC1ConvertedValue[2];
-
-			  result = value_adc;
-		    return result;
-	}
-
-float convert_adc(float value_adc, int scale)
-	{
-		float result ;
-		result =(value_adc-2048 )*scale/1240;
-		return result;
+		I2C_Cmd(I2C2,ENABLE);
 		}
-
-float RMS_cal(float	*value, int len_value)// caculator RMS
-	{
-		float result;
-		result =0;
-		int k;
-		for(k=0;k < len_value ; k++)
-		{
-			result = result + (*(value+k))*(*(value+k));
-			}
-		result = result/len_value;// result = result / len_value
-		result = sqrt(result);
-	return result;
-		}
-float P_CAL(float *value1,float *value2, int len_value)//caculator  Potestas  (w)
-{
-	float result;
-	int k;
-	for(k=0; k<len_value; k++)
-	{
-		result = result + (*(value1+k))*(*(value2+k));
-		}
-	result = result *len_value;// result = result / len_value
-	//result = value1*value2*0.002;
-	return result;
-	}
-//float PF_cal()//caculator POWER FACTOR
-//	{
-//		float result;
-//    return result;
-//		}
-//float f_cal()//caculator frenquence(Hz)
-//{
-//    float result;
-//	  return result;
-//}
-
-//----------------------------------------------------------------------------------------------
-
-static unsigned int calcuteCRC16 (unsigned char *pBuff, unsigned char pLen)
-{
-    unsigned int crc = 0xFFFF;
-    int pos,i;
-      for ( pos = 0; pos < pLen; pos++)
-      {
-        crc ^= (unsigned int) pBuff[pos]; // XOR byte into least sig. byte of crc
-        for ( i = 0; i < 8; i++)   // Loop over each bit
-        {
-          if ((crc & 0x0001) != 0 )   // If the LSB is set
-          {
-            crc >>= 1;
-            crc ^= 0xA001;
-          }
-          else
-            crc >>= 1;
-        };
-      };
-      // Note, this number has low and high bytes swapped, so use it accordingly (or swap bytes)
-      return crc;
-}
-//----------------------------------------------------------------------------------------------	
-
-void send_data(void)
-{
-	//		printf("send data");
-	printf("?node=solarpvtxac&fulljson={\"UAC_0.1V\":%d,\"I1_mA\":%d,\"I2_mA\":%d,\"P1_mW\":%d,\"P2_mW\":%d}\n", (int) vtac.Uavr, (int) ct1.Iavr,(int) ct2.Iavr,(int) (p1.Pavr/10),(int) (p2.Pavr/10));
-		
-}
-void process_cmd(void)
-{
-	unsigned int CRC16;
-	union check_crc{
-        unsigned int crc_full;
-        struct {
-            unsigned char crc_lsb;
-            unsigned char crc_msb;
-        }crc_half ;
-    } checkcrc;
-	unsigned char *pBuff;
-	pBuff =(unsigned char *) cmd_buf;
-	CRC16 = calcuteCRC16(pBuff,8);	
-  checkcrc.crc_half.crc_msb=*(pBuff+8);
-  checkcrc.crc_half.crc_lsb=*(pBuff+7);		
-	if (CRC16 !=	checkcrc.crc_full) return ;
-	
-}
-void measure_data(void)
-	{
-			//printf("measure data");
-		#ifndef TEST
-		    // check zero crossing, voltage increase
-					timeout =0;
-						do 
-			 		{
-						k=0;
-						getdata_time(15);
-						timeout++;
-					}while((vtac.uadc[0] > 2048));
-					
-					do
-						{
-						//k=0;
-						getdata_time(15);
-							timeout++;
-							}while((vtac.uadc[0]<2048)&&(timeout <30000));
-					//turn on timer to measure frenquence
-					
-					
-					//get data
-					  do
-					{
-								k++;
-								//ct1.iadc[k] = read_adc(ADC1, ADC_CT1);
-								//ct2.iadc[k] = read_adc(ADC1, ADC_CT2);
-								//vtac.uadc[k] = read_adc(ADC1,ADC_VT1);
-								getdata_time(15);
-						timeout++;
-					}while((!(((vtac.uadc[k-1]<2048)&&(vtac.uadc[k]>2048))||(k==499)))); 		//20ms = 40us*500
-					
-					//if(timeout > 30000) return;
-					#else
-					k= 490;
-	  #endif
-					
-					
-					//turn off timer to measure frenquence
-					
-					
-					int m=0;
-					//convert voltage adc -> current/voltage true
-					for(m=0;m<k+1;m++)
-					{
-					ct1.i[m] = convert_adc(ct1.iadc[m],1000);
-					ct2.i[m] = convert_adc(ct2.iadc[m],1000);    //mA
-					vtac.u[m] = convert_adc(vtac.uadc[m],1451);   //0.1V;// scale = calib*n*(R1+R2)/R2     : n:ti so bien ap 220/12; R1 = 220k; R2 = 10k
-						}
-					
-					
-					//caculator I_RMS, U_RMS, P, PF, frequence
-					ct1.I= RMS_cal(ct1.i,k+1);
-					ct2.I= RMS_cal(ct2.i,k+1);
-					vtac.U= RMS_cal(vtac.u,k+1);
-					
-					/*//--------------
-					for(m=0;m<k+1;m++)
-					{
-					printf("%f\n",u_2[m]);
-						}
-					//--------------*/	
-						
-//					f = f_cal();
-					p1.P = P_CAL(ct1.i,vtac.u,k+1);
-					p2.P = P_CAL(ct2.i,vtac.u,k+1);
-					r++;
-	//				PF = PF_cal();
-		}
-
-		
-void avr_data(void)
-	{
-				//if(timeout>30000) return;
-				ct1.Iavr = (ct1.Iavr*(r-1) + ct1.I)/r;
-				ct2.Iavr = (ct2.Iavr*(r-1) + ct2.I)/r;
-				vtac.Uavr = (vtac.Uavr*(r-1) + vtac.U)/r;
-				p1.Pavr = (p1.Pavr*(r-1) + p1.P)/r;
-				p2.Pavr = (p2.Pavr*(r-1) + p2.P)/r;
-				if(r>60000) {
-					while(1){}
-					}
-		}
-	
-
